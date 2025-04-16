@@ -3,25 +3,22 @@
  * @return {boolean}
  */
 
-const a = 121;
-
+const a = 1214;
 
 var isPalindrome = function (x) {
-    const numbers = x.toString().split("").map(Number);
-    const reverseNumbers = [...numbers].reverse();
-    console.log(numbers.length)
-    let count = 0;
-    for (let i = 0; i < numbers.length; i++) {
-        if(numbers[i]===reverseNumbers[i]){
-           count++
+    const arr = x.toString().split("")
+    const reverse = [...arr].reverse()
+    let count =  0
+    for(let i=0; i<arr.length ; i++){
+        if(arr[i]===reverse[i]){
+            count++
         }
     }
-    if(count=== numbers.length){
-        return true
+    if(count===arr.length){
+        return  true
     }else{
-       return false
+        return false
     }
-    // return count
 };
 
 console.log(isPalindrome(a))
