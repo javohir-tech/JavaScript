@@ -6,17 +6,19 @@ function ListNode(val, next = null) {
 var mergeTwoLists = function (list1, list2) {
     let dummy = new ListNode(-1); // {val : -1 , next:null}
     let current = dummy;
-
+    // console.log(current)
     while (list1 !== null && list2 !== null) {
         if (list1.val < list2.val) {
             current.next = list1;
+            console.log(current.next ,"current kichik")
             list1 = list1.next;
         } else {
             current.next = list2;
+            console.log(current.next, "current katta ")
             list2 = list2.next;
         }
         current = current.next;
-        console.log(current, "salom")
+        // console.log(current, "salom")
     }
 
     // Qolgan qismini qo‘shamiz
@@ -27,7 +29,6 @@ var mergeTwoLists = function (list1, list2) {
 
 
 let list1 = new ListNode(1, new ListNode(2, new ListNode(4)));
-// console.log(list1.next)
 let list2 = new ListNode(1, new ListNode(3, new ListNode(4)));
 
 let merged = mergeTwoLists(list1, list2);
