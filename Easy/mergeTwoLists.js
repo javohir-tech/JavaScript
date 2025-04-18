@@ -10,20 +10,20 @@ var mergeTwoLists = function (list1, list2) {
     while (list1 !== null && list2 !== null) {
         if (list1.val < list2.val) {
             current.next = list1;
-            console.log(current.next ,"current kichik")
+            // console.log(current.next, "current kichik")
             list1 = list1.next;
         } else {
-            current.next = list2;
-            console.log(current.next, "current katta ")
+            current.next = list2; // current.next = {val : 1 . next: }
+            // console.log(current.next, "current katta ")
             list2 = list2.next;
         }
         current = current.next;
-        // console.log(current, "salom")
+        // console.log(current)
     }
-
+    console.log(list2)
     // Qolgan qismini qo‘shamiz
     current.next = list1 !== null ? list1 : list2;
-
+    // console.log(dummy.next)
     return dummy.next;
 };
 
