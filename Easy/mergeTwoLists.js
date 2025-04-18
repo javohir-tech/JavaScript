@@ -23,7 +23,7 @@ var mergeTwoLists = function (list1, list2) {
     console.log(list2)
     // Qolgan qismini qo‘shamiz
     current.next = list1 !== null ? list1 : list2;
-    // console.log(dummy.next)
+    // console.log(dummy.next)  
     return dummy.next;
 };
 
