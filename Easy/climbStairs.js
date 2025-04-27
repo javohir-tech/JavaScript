@@ -12,11 +12,11 @@ var climbStairs = function (n) {
 
     for(let i=3; i<=n; i++){
         current = birinchi + ikkinchi;
-        ikkinchi = birinchi;
-        birinchi= current
+        birinchi = ikkinchi;
+        ikkinchi= current
     }
 
     return current
 };
 
-console.log(climbStairs(5))
+console.log(climbStairs(4))
