@@ -18,11 +18,11 @@ function ListNode(val, next = null) {
 let head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))))
 
 var reverseList = function (head) {
+    let current = head
     return head
 };
 
 let result = reverseList(head)
-// console.log(result)
 let arr = [];
 
 while (result !== null) {
