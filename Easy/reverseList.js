@@ -18,15 +18,24 @@ function ListNode(val, next = null) {
 let head = new ListNode(1, new ListNode(2, new ListNode(3, new ListNode(4, new ListNode(5)))))
 
 var reverseList = function (head) {
+    let prev = null;
     let current = head
-    return head
+
+    while (current !== null) {
+        let nextTemp = current.next; // 2... 
+        current.next = prev; null
+
+        prev = current; //
+        current = nextTemp
+    }
+    return prev
 };
 
 let result = reverseList(head)
 let arr = [];
 
 while (result !== null) {
-    arr.unshift(result.val);
+    arr.push(result.val);
     result = result.next
 }
 

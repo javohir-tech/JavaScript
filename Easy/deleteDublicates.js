@@ -3,7 +3,7 @@ function ListNode(val, next = null) {
     this.next = next
 }
 
-let head = new ListNode(1, new ListNode(1, new ListNode(2)));
+let head = new ListNode(1, new ListNode(1, new ListNode(2 , new ListNode(2, new ListNode(3)))));
 
 function deleteDuplicates(head) {
     let current = head;
@@ -11,10 +11,10 @@ function deleteDuplicates(head) {
     while (current !== null && current.next !==null) {
         if (current.val === current.next.val) {
             current.next = current.next.next;
-            console.log(current)
+            console.log(current, "salom")
         }else{
             current = current.next;
-            console.log(current)
+            console.log(current, "alik")
         }
     }
 
