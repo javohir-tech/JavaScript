@@ -16,8 +16,8 @@ function cencellable(fn, args, t,) {
 }
 
 let result = [];
-const args = [2, 4], t = 20, cencelTimeMs = 50
-const fn = (x)=> x * 3;
+const args = [2], t = 20, cencelTimeMs = 50
+const fn = (x) => x * 3;
 const start = performance.now()
 const log = (...argsArr) => {
     const diff = Math.floor(performance.now() - start);
@@ -27,7 +27,9 @@ const log = (...argsArr) => {
 const cencel = cencellable(log, args, t)
 const maxT = Math.max(t, cencelTimeMs)
 
-setTimeout(cencel, cencelTimeMs);
+setTimeout(() => {
+    cencel()
+}, cencelTimeMs);
 setTimeout(() => {
     console.log(result)
 }, maxT + 15)
