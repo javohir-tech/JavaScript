@@ -23,10 +23,18 @@ const funk = async (n) => {
     return n * n
 }
 
-t = 99;
+t = 110;
 const args = [5]
+const start = performance.now()
+const result = []
 
 const limited = timeLimit(funk, t)
 limited(...args)
-    .then(console.log)
-    .catch(console.log)
+    .then((res) => {
+        result.push({ 'resolved': res, 'time': Math.floor(performance.now() - start) })
+        console.log(result)
+    })
+    .catch((err) => {
+        result.push({ "err": err, 'time' : Math.floor(performance.now()-start)})
+        console.log(result)
+    })
