@@ -1,15 +1,14 @@
 function timeLimit(fn, t) {
-
-    return async function (args) {
+    return async function (...args) {
         return new Promise((resolve, reject) => {
             const timer = setTimeout(() => {
-                reject("vaqtidan  otib ketti")
+                reject('vatq limitda oshdi')
             }, t)
 
-            fn(args)
-                .then((result) => {
+            fn(...args)
+                .then((res) => {
                     clearTimeout(timer)
-                    resolve(result)
+                    resolve(res)
                 })
                 .catch((err) => {
                     clearTimeout(timer);
@@ -24,10 +23,10 @@ const funk = async (n) => {
     return n * n
 }
 
-t = 120;
+t = 99;
+const args = [5]
 
 const limited = timeLimit(funk, t)
-
-limited(5)
+limited(...args)
     .then(console.log)
     .catch(console.log)
