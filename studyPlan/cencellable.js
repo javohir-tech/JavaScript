@@ -4,46 +4,49 @@
  * @param {number} t
  * @return {Function}
  */
-function cencellable(fn, args, t) {
+function cancellable(fn, args, t) {
     let timer;
-    let elepsedTime = 0;
+    let elapsedTime = 0;
 
     const intervalFn = () => {
-        fn(...args)
-        elepsedTime += t
+        fn(...args);
+        elapsedTime += t;
 
-        if (elepsedTime >= 190) {
-            clearInterval(timer)
+        if (elapsedTime >= 190) {
+            clearInterval(timer); // intervalni to'xtatamiz
         }
-    }
+    };
 
+    // Intervalni o'rnatamiz
     timer = setInterval(intervalFn, t);
 
-    return function cencelFn() {
-        clearInterval(timer)
-    }
-
-
+    // Bekor qilish funksiyasini qaytaramiz
+    return function cancelFn() {
+        clearInterval(timer); // intervalni to'xtatadi
+    };
 };
 
-const result = []
+const result = [];
 
 const fn = (x) => x * 2;
-const args = [4], t = 35
-
+const args = [4];
+const t = 35;
 const cancelTimeMs = 190;
 
 const start = performance.now();
 
 const log = (...argsArr) => {
-    const diff = Math.floor(performance.now() - start)
-    result.push({ "time": diff, "returned": fn(...argsArr) })
-}
+    const diff = Math.floor(performance.now() - start);
+    result.push({ "time": diff, "returned": fn(...argsArr) });
+};
 
-const cencel = cencellable(log, args, t)
+// cancelFn ni olish
+const cancelFn = cancellable(log, args, t);
 
-setTimeout(cencel, 190);
+// cancelFn ni 190ms da bekor qilish
+setTimeout(cancelFn, cancelTimeMs);
+
+// Natijalarni chiqarish
 setTimeout(() => {
-    console.log(result)
-}, 190 + t + 15);
-
+    console.log(result);
+}, cancelTimeMs + t + 15);
