@@ -27,9 +27,7 @@ const log = (...argsArr) => {
 const cencel = cencellable(log, args, t)
 const maxT = Math.max(t, cencelTimeMs)
 
-setTimeout(() => {
-    cencel()
-}, cencelTimeMs);
+setTimeout(cencel, cencelTimeMs)
 setTimeout(() => {
     console.log(result)
 }, maxT + 15)
