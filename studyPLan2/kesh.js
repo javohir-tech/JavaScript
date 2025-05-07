@@ -24,8 +24,8 @@ const sum = (a, b) => {
 
 const memoizedFn = memoize(sum);
 console.log(memoizedFn(2, 3))
-// console.log(memoizedFn(2, 3))
-// console.log(memoizedFn(2, 3))
+console.log(memoizedFn(2, 3))
+console.log(memoizedFn(2, 3))
 console.log(callCount)
 
 
