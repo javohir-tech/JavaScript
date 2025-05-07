@@ -1,47 +1,49 @@
-class TimeLimitedCache {
+class TimeLimitCache {
     constructor() {
-        this.cache = new Map(); // key: { value, expiry }
+        this.cache = new Map();
     }
 
     set(key, value, duration) {
         const now = Date.now();
-        const isExistingValid = this.cache.has(key) && this.cache.get(key).expiry > now;
+        const javob = this.cache.has(key) && this.cache.has(key).vaqt > now
 
         this.cache.set(key, {
             value,
-            expiry: now + duration
-        });
-        console.log(this.cache)
-        return isExistingValid;
+            vaqt: now + duration
+        })
+
+        return javob
     }
 
     get(key) {
         const now = Date.now();
         if (this.cache.has(key)) {
-            const item = this.cache.get(key);
-            if (item.expiry > now) {
-                return item.value;
+            const item = this.cache.get(key)
+            if (item.vaqt > now) {
+                return item.value
             }
         }
-        return -1;
+        return -1
     }
 
     count() {
         const now = Date.now();
-        let count = 0;
-        for (const [_, item] of this.cache.entries()) {
-            if (item.expiry > now) {
-                count++;
+        const result = [];
+
+        for (const [key, item] of this.cache.entries()) {
+            if (item.vaqt > now) {
+                result.push(key)
             }
         }
-        return count;
+
+        return result
     }
 }
 
-const cache = new TimeLimitedCache();
+const kesh = new TimeLimitCache()
 
-console.log(cache.set(1, 39, 100)); // false
-setTimeout(() => console.log(cache.get(1)), 50);   // 42
-setTimeout(() => console.log(cache.count()), 50);  // 1
-setTimeout(() => console.log(cache.get(1)), 30);  // -1
-
+console.log(kesh.set(1, 30, 150));
+setTimeout(() => { console.log(kesh.get(1)) }, 100);
+setTimeout(() => { console.log(kesh.count()) }, 120);
+setTimeout(() => { console.log(kesh.get(1)) }, 160);
+setTimeout(() => { console.log(kesh.count()) }, 170);
