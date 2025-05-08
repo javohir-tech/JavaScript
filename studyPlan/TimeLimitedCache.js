@@ -5,7 +5,7 @@ class TimeLimitCache {
 
     set(key, value, duration) {
         const now = Date.now();
-        const javob = this.cache.has(key) && this.cache.has(key).vaqt > now
+        const javob = this.cache.has(key) && this.cache.get(key).vaqt > now
 
         this.cache.set(key, {
             value,
