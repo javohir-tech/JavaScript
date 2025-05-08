@@ -1,16 +1,17 @@
 class TimeLimitCache {
     constructor() {
-        this.cache = new Map()
+        this.cache = new Map
     }
 
-    set(key, value, duration) {
-        const now = Date.now();
-        const javob = this.cache.has(key) && this.cache.has(key).vaqt > now;
+    set(key, qiymat, duration) {
+        const now = Date.now()
+        const javob = this.cache.has(key) && this.cache.get(key).vaqt > now
 
         this.cache.set(key, {
-            value,
+            qiymat,
             vaqt: now + duration
-        });
+        })
+
         return javob
     }
 
@@ -19,7 +20,7 @@ class TimeLimitCache {
         if (this.cache.has(key)) {
             const item = this.cache.get(key)
             if (item.vaqt > now) {
-                return item.value
+                return item.qiymat
             }
         }
         return -1
@@ -27,19 +28,25 @@ class TimeLimitCache {
 
     count() {
         const now = Date.now()
-        let counter = 0
+        let counter = 0;
         for (const [_, item] of this.cache.entries()) {
-            counter++
+            if (item.vaqt > now) {
+                counter++
+            }
         }
         return counter
     }
 }
 
-const cache =  new TimeLimitCache();
 
-console.log(cache.set(1, 625, 150));
-setTimeout(()=>{console.log(cache.get(1))}, 100);
-setTimeout(()=>{
-    console.log(cache.count())
-}, 120);
-setTimeout(()=>{console.log(cache.get(1))}, 160);
+const kesh = new TimeLimitCache();
+
+console.log(kesh.set(1, 29, 150));
+setTimeout(() => {
+    console.log(kesh.get(1))
+    console.log(kesh.count())
+}, 100);
+setTimeout(() => {
+    console.log(kesh.get(1))
+    console.log(kesh.count())
+}, 160)
