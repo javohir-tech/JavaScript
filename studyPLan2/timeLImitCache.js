@@ -1,14 +1,14 @@
-class timeLimitCache {
+class TimeLimitedCache {
     constructor() {
         this.cache = new Map();
     }
 
     set(key, value, duration) {
         const now = Date.now();
-        const javob = this.cache.has(key) && this.cache.get(key) > duration;
+        const javob = this.cache.has(key) && this.cache.get(key).time > duration;
 
         this.cache.set(key, {
-            value,
+            "value": value,
             "time": duration + now
         })
         return javob
@@ -19,7 +19,7 @@ class timeLimitCache {
         if (this.cache.has(key)) {
             const item = this.cache.get(key)
             if (item.time > now) {
-                return item
+                return item.value
             }
         }
         return -1
@@ -38,12 +38,15 @@ class timeLimitCache {
 
 }
 
-const kesh = new timeLimitCache()
+const kesh = new TimeLimitedCache()
 
 console.log(kesh.set(1, 23, 100))
 setTimeout(() => {
     console.log(kesh.get(1))
 }, 50)
-setTimeout(()=>{
+setTimeout(() => {
     console.log(kesh.count())
 }, 70)
+setTimeout(() => {
+    console.log(kesh.get(1))
+}, 110)
