@@ -1,25 +1,28 @@
-/**
- * @param {Object|Array} obj
- * @return {Object|Array}
- */
-var compactObject = function (obj) {
+function compactObject(obj) {
     if (Array.isArray(obj)) {
         return obj
-            .map(compactObject)
-            .filter(Boolean)
-    } else if (obj !== null && typeof obj === "object") {
-        const result = {}
+            .map(compactObject)           // Har bir elementni rekursiv tozalaymiz
+            .filter(Boolean);             // Faqat truthy qiymatlarni qoldiramiz
+    } else if (obj !== null && typeof obj === 'object') {
+        const result = {};
         for (let key in obj) {
-            const compocted = compactObject(obj[key]);
-            if (Boolean(compocted) || typeof compocted === "object" && Object.keys(compocted).length > 0){
-                result[key] = compocted
+            const compacted = compactObject(obj[key]); // chuqur tozalash uchun 
+            
+            if (
+                (typeof compacted === 'object' && compacted !== null && Object.keys(compacted).length > 0) ||
+                (typeof compacted !== 'object' && Boolean(compacted))
+            ) {
+                result[key] = compacted;
             }
+            console.log(compacted)
+
         }
-        return result
-    }else{
-        return obj
+        return result;
+    } else {
+        return obj;
     }
-};
+}
 
-
-console.log(compactObject([null, 0, false, 1])); 
+// console.log(compactObject([null, 0, false, 1])); 
+console.log(compactObject({"a": null, "b": [false, 1]})); 
+// console.log(compactObject([null, 0, 5, [0], [false, 16]])); 
