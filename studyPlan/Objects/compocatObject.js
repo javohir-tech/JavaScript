@@ -1,25 +1,22 @@
 function compactObject(obj) {
     if (Array.isArray(obj)) {
         return obj
-            .map(compactObject)           // Har bir elementni rekursiv tozalaymiz
-            .filter(Boolean);             // Faqat truthy qiymatlarni qoldiramiz
-    } else if (obj !== null && typeof obj === 'object') {
+            .map(compactObject)
+            .filter(Boolean)
+    } else if (typeof obj === 'object' && obj !== null) {
         const result = {};
         for (let key in obj) {
-            const compacted = compactObject(obj[key]); // chuqur tozalash uchun  // null , [false , 1] => [1]
-            console.log(obj[key])
+            const compected = compactObject(obj[key])
             if (
-                (typeof compacted === 'object' && compacted !== null && Object.keys(compacted).length > 0) ||
-                (typeof compacted !== 'object' && Boolean(compacted))
+                (compected !== null && typeof compected === 'object' && Object.keys(compected).length > 0)
+                || (typeof compactObject !== 'object' && Boolean(compected))
             ) {
-                result[key] = compacted;
+                result[key] = compected
             }
-            // console.log(compacted)
-
         }
-        return result;
+        return result
     } else {
-        return obj;
+        return obj
     }
 }
 
