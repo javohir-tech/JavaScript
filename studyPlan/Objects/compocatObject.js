@@ -10,10 +10,10 @@ function compactObject(obj) {
         for (let key in obj) {
             const compocted = compactObject(obj[key])
 
-            if(
-                (compocted !==null && typeof compocted === 'object' && Object.keys(compocted).length>0)
-                || ( typeof compocted !== 'object' && Boolean(compocted))
-            ){
+            if (
+                (typeof compocted === 'object' && compocted !== null && Object.keys(compocted).length > 0)
+                || (typeof compocted !== 'object' && Boolean(compocted))
+            ) {
                 result[key] = compocted
             }
         }
