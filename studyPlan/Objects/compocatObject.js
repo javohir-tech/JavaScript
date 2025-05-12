@@ -3,19 +3,24 @@ function compactObject(obj) {
         return obj
             .map(compactObject)
             .filter(Boolean)
-    } else if (typeof obj === 'object' && obj !== null) {
+    }
+
+    else if (typeof obj === 'object' && obj !== null) {
         const result = {};
         for (let key in obj) {
-            const compected = compactObject(obj[key])
-            if (
-                (compected !== null && typeof compected === 'object' && Object.keys(compected).length > 0)
-                || (typeof compactObject !== 'object' && Boolean(compected))
-            ) {
-                result[key] = compected
+            const compocted = compactObject(obj[key])
+
+            if(
+                (compocted !==null && typeof compocted === 'object' && Object.keys(compocted).length>0)
+                || ( typeof compocted !== 'object' && Boolean(compocted))
+            ){
+                result[key] = compocted
             }
         }
         return result
-    } else {
+    }
+
+    else {
         return obj
     }
 }
