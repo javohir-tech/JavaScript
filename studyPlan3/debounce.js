@@ -1,38 +1,28 @@
-/**
- * @param {Function} fn
- * @param {number} t milliseconds
- * @return {Function}
- */
 var debounce = function (fn, t) {
-    let timer;
+    let timer ;
     return function (...args) {
-        if(timer) clearTimeout(timer)
-         timer = setTimeout(() => {
+        if (timer) clearTimeout(timer)
+
+        timer = setTimeout(() => {
             fn(...args)
-        }, t);
-
-
+        }, t)
     }
-};
-
-const t = 50;
-const start = Date.now();
-
-const log = (...args) => {
-    console.log([{ "t": Math.floor(Date.now() - start), "value": [...args] }])
 }
 
-const result = debounce(log, t)
+const start = Date.now();
+
+const t = 50;
+
+const log = (...args) => {
+    const diff = Math.floor(Date.now() - start);
+    console.log([{ "time": diff, 'value': [...args] }])
+}
+
+const dlog = debounce(log, t);
 
 setTimeout(() => {
-    result(1)
-}, 50)
+    dlog(1)
+}, 70)
 setTimeout(() => {
-    result(2)
-}, 75)
-/**
- * const log = debounce(console.log, 100);
- * log('Hello'); // cancelled
- * log('Hello'); // cancelled
- * log('Hello'); // Logged at t=100ms
- */
+    dlog(2)
+}, 120)
