@@ -9,7 +9,6 @@ function productExceptSelf(nums) {
         }, 1)
        result.push(item)
     }
-
     return result
 }
 
