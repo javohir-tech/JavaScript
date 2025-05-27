@@ -3,24 +3,22 @@
  * @return {boolean}
  */
 var increasingTriplet = function (nums) {
+    let a = Infinity;
+    let b = Infinity;
 
-    let count = 0;
-
-    for (let i = 0; i < nums.length-1 ; i++) {
-        if (nums[i] < nums[i + 1]) {
-            count ++;
-            console.log(count , "+")
-            if (count === 3) {
-                return true
-            }
+    for (let num of nums) {
+        if (num <= a) {
+            a=  num;
+        } else if (num <= b) {
+            b = num
         } else {
-            count = 1
-            console.log(count , "-")
+            return true
         }
     }
+
     return false
 };
 
-const nums = [2,1,5,0,4,6];
+const nums = [2, 1, 5, 0, 4, 6];
 
 console.log(increasingTriplet(nums))
