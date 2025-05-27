@@ -3,14 +3,14 @@
  * @return {boolean}
  */
 var increasingTriplet = function (nums) {
-    let a = Infinity;
-    let b = Infinity;
+    let birinchi = Infinity;
+    let ikkinchi = Infinity;
 
     for (let num of nums) {
-        if (num <= a) {
-            a=  num;
-        } else if (num <= b) {
-            b = num
+        if (num <= birinchi) {
+            birinchi = num
+        } else if (num <= ikkinchi) {
+            ikkinchi = num
         } else {
             return true
         }
