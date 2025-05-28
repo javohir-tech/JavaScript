@@ -17,17 +17,16 @@ var compress = function (chars) {
 
         chars[write] = currentChar;
         write++;
+
         if (count > 1) {
             const countStr = count.toString();
-
-            for(let i=0 ; i<countStr.length ; i++){
+            for (let i = 0; i < countStr.length; i++) {
                 chars[write] = countStr[i];
                 write++
             }
         }
     }
-    return write
-
+    return write;
 };
 
 const chars = ["a", "a", "b", "b", "c", "c", "c"];
