@@ -9,24 +9,25 @@ var compress = function (chars) {
     while (read < chars.length) {
         let currentChar = chars[read];
         let count = 0;
+
         while (read < chars.length && chars[read] === currentChar) {
             read++;
-            count++
+            count++;
         }
 
         chars[write] = currentChar;
-        write++
-
+        write++;
         if (count > 1) {
-            let countStr = count.toString();
-            for (let i = 0; i < countStr.length; i++) {
-                chars[write] = countStr[i]
+            const countStr = count.toString();
+
+            for(let i=0 ; i<countStr.length ; i++){
+                chars[write] = countStr[i];
                 write++
             }
         }
-
     }
     return write
+
 };
 
 const chars = ["a", "a", "b", "b", "c", "c", "c"];
