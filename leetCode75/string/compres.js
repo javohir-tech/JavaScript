@@ -3,22 +3,33 @@
  * @return {number}
  */
 var compress = function (chars) {
-    const result = [];
-    let count = 1;
-    for (let i = 0; i < chars.length - 1; i++) {
-        if (chars[i] === chars[i + 1]) {
+    let write = 0;
+    let read = 0;
+
+    while (read < chars.length) {
+        let currentChar = chars[read];
+        let count = 0;
+        while (read < chars.length && chars[read] === currentChar) {
+            read++;
             count++
-        } else {
-            count = 1;
         }
-        console.log(count)
-        if (!result.includes(chars[i])) {
-            result.push(chars[i])
+
+        chars[write] = currentChar;
+        write++
+
+        if (count > 1) {
+            let countStr = count.toString();
+            for (let i = 0; i < countStr.length; i++) {
+                chars[write] = countStr[i]
+                write++
+            }
         }
+
     }
-    return result
+    return write
 };
 
-const chars = ["a", "a", "b", "b", "a", "c", "c", "c"];
+const chars = ["a", "a", "b", "b", "c", "c", "c"];
 
-console.log(compress(chars))
+const len = compress(chars)
+console.log(chars.slice(0, len))
