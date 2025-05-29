@@ -8,12 +8,14 @@ var isSubsequence = function (s, t) {
     let read2 = 0
     while (read1 < s.length && read2 < t.length) {
         if(s[read1]===t[read2]){
-            i++
+            read1++
         }
-        j++
+        read2++
     }
+
+    return read1 === s.length
 };
 
 const s = "abc"
 const t = "ahbgdc"
-isSubsequence(s, t)
+console.log(isSubsequence(s, t))
