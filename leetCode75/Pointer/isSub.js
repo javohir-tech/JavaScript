@@ -4,14 +4,9 @@
  * @return {boolean}
  */
 var isSubsequence = function (s, t) {
-    let index = 0
-
-    for (let char of s) {
-        index = t.indexOf(char , index);
-        if(index ===  -1) return false
-        index++
-    }
-    return true
+    let pattern  = s.split('').join('.*');
+    let regex = new RegExp(pattern);
+    return regex.test(t)
 }
 
 const s = "abc"
