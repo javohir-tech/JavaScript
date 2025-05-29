@@ -6,13 +6,11 @@
 var isSubsequence = function (s, t) {
     let read1 = 0;
     let read2 = 0
-    while (read1 < s.length) {
-        const current = s[read1]
-        while (read2 < t.length && current !== t[read2]){
-            read2++
+    while (read1 < s.length && read2 < t.length) {
+        if(s[read1]===t[read2]){
+            i++
         }
-        console.log(t[read2])
-        read1++
+        j++
     }
 };
 
