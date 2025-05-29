@@ -4,17 +4,17 @@
  * @return {boolean}
  */
 var isSubsequence = function (s, t) {
-    let read1 = 0;
-    let read2 = 0
-    while (read1 < s.length && read2 < t.length) {
-        if(s[read1]===t[read2]){
-            read1++
-        }
-        read2++
-    }
+    let i = 0;
+    let j = 0;
 
-    return read1 === s.length
-};
+    while (i < s.length && j < t.length) {
+        if (s[i] === t[j]) {
+            i++
+        }
+        j++
+    }
+    return  i=== s.length
+}
 
 const s = "abc"
 const t = "ahbgdc"
