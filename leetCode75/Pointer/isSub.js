@@ -4,16 +4,17 @@
  * @return {boolean}
  */
 var isSubsequence = function (s, t) {
-    if(s.length === 0) return true;
-    if(t.length === 0) return false;
-
-    if(s[0]===t[0]){
-        return isSubsequence(s.slice(1) , t.slice(1))
-    }else{
-        return isSubsequence(s, t.slice(1));
+    let i = 0;
+    let j = 0;
+    while (i < s.length && j < t.length) {
+        if(s[i]===t[j]){
+            i++
+        }
+        j++
     }
+    return i===s.length
 }
 
 const s = "abc"
-const t = "ahxgdc"
+const t = "ahbgdc"
 console.log(isSubsequence(s, t))
