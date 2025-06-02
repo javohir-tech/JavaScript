@@ -1,21 +1,25 @@
-/**
- * @param {number[]} height
- * @return {number}
- */
-var maxArea = function (height) {
-    let maxHeight = height[0];
-    let length = 0
-    let result = 1;
-    for (let i = 1; i < height.length; i++) {
-        if (maxHeight - height[i] >= 0) {
-            length++
-            result = length * height[i]
-        } else {
-            maxHeight = height[i]
-        }
-    }
-    return result
-};
+function maxArea(height) {
+  let left = 0;
+  let right = height.length - 1;
+  let maxArea = 0;
 
-const height = [1, 2, 1]  //49
-console.log(maxArea(height))
+  while (left < right) {
+    const heightMin = Math.min(height[left], height[right]);
+    const width = right - left;
+    const area = heightMin * width;
+    maxArea = Math.max(maxArea, area);
+
+    // Kichikroq balandlikni ichkariga siljitamiz
+    if (height[left] < height[right]) {
+      left++;
+    } else {
+      right--;
+    }
+  }
+
+  return maxArea;
+}
+
+// Misollar
+console.log(maxArea([1,8,6,2,5,4,8,3,7])); // 49
+console.log(maxArea([1,1]));               // 1
