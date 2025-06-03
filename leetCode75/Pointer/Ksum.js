@@ -15,4 +15,4 @@ var maxOperations = function (nums, k) {
 
 const nums = [2, 1, 3, 4];
 const k = 5;
-console.log(maxOperations(nums, k));  // Chiqish: 1
+console.log(maxOperations(nums, k)); 
