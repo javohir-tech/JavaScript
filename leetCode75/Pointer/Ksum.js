@@ -3,7 +3,6 @@ var maxOperations = function (nums, k) {
     let count = 0;
     for (let num of nums) {
         const diff = k - num;
-
         if (map.get(diff) > 0) {
             count++;
             map.set(diff, map.get(diff) - 1)
@@ -11,7 +10,6 @@ var maxOperations = function (nums, k) {
             map.set(num, (map.get(num) || 0) + 1)
         }
     }
-
     return count
 };
 
