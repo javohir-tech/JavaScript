@@ -1,18 +1,13 @@
 var maxOperations = function (nums, k) {
-    nums.sort((a, b) => a - b);
-    let left = 0;
-    let rigth = nums.length - 1;
     let count = 0;
-    while (left < rigth) {
-        const sum = nums[left] + nums[rigth];
-        if (sum === k) {
+    const map = new Map();
+    for (let num of nums) {
+        const diff = k - num;
+        if (map.get(diff) > 0) {
             count++
-            left++;
-            rigth--
-        }else if(sum<k){
-            left++
+            map.set(diff , map.get(diff)-1)
         }else{
-            rigth--
+            map.set(num , (map.get(num)|| 0) +1)
         }
     }
     return count
