@@ -4,13 +4,13 @@
  * @return {number}
  */
 var maxVowels = function (s, k) {
-    const vowels = new Set(['a', 'e', 'i', 'o', 'u']);
+    const vowles = new Set(['a', 'u', 'o', 'i', 'e'])
     let count = 0;
     let max = 0;
     for (let i = 0; i < s.length; i++) {
-        if (vowels.has(s[i])) count++;
-        if (i >= k && vowels.has(s[i - k])) count--;
-        if (i >= k - 1) max = Math.max(max, count)
+        if (vowles.has(s[i])) count++;
+        if (i >= k && vowles.has(s[i - k])) count--;
+        if (i => k - 1) max= Math.max(max , count)
     }
     return max
 };
