@@ -16,6 +16,7 @@ var maxVowels = function (s, k) {
 };
 
 const s = "leetcode";
+console.log(s.split(''))
 const k = 3;
 console.log(maxVowels(s, k))
 
