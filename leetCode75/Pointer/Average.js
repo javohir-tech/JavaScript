@@ -4,10 +4,21 @@
  * @return {number}
  */
 var findMaxAverage = function (nums, k) {
-    const sum = nums.reduce((curr, acc) => {
-        return curr + acc
-    }, 0)
-    return sum
+    let i = k;
+    let j = 0;
+    let result = 0;
+    while (nums.length >= i) {
+        const newArr = nums.slice(j, i);
+        const sum = newArr.reduce((acc, curr) => {
+            return acc + curr
+        }, 0)
+        if (sum > result) {
+            result=sum
+        }
+        i++
+        j++
+    }
+    return result/k
 };
 
 const nums = [1, 12, -5, -6, 50, 3];
