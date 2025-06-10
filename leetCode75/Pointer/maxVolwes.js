@@ -4,7 +4,7 @@
  * @return {number}
  */
 var maxVowels = function (s, k) {
-    const vowels = new Set('a', 'e', 'i', 'o', 'u');
+    const vowels = new Set(['a', 'e', 'i', 'o', 'u']);
     let count = 0;
     let max = 0;
     for (let i = 0; i < s.length; i++) {
