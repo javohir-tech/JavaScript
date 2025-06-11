@@ -9,14 +9,13 @@ var longestOnes = function (nums, k) {
         if (nums[right] === 0) k--;
 
         if (k < 0) {
-            if (nums[left] === 0) k++;
-            left++;
-            console.log(left)
+            if (nums[left]) k++;
+            left++
         }
     }
-    return nums.length - left;
+    return nums.length - left
 };
 
-const nums = [1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0]
-const k = 2
+const nums = [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1]
+const k = 3;
 console.log(longestOnes(nums, k))
