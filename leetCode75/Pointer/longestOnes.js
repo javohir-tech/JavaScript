@@ -5,12 +5,12 @@
  */
 var longestOnes = function (nums, k) {
     let left = 0;
-    for (let rigth = 0; rigth < 0; rigth++) {
-        if(nums[rigth]===0) k--;
+    for (let rigth = 0; rigth < nums.length; rigth++) {
+        if (nums[rigth] === 0) k--;
 
-        if(k<0){
-           if( nums[left]) k++;
-           left++
+        if (k < 0) {
+            if (nums[left]) k++ ;
+            left++
         }
     }
     return nums.length - left
