@@ -14,19 +14,19 @@ var longestSubarray = function (nums) {
         }
 
         while (zeroCount > 1) {
-            if (nums[left] === 0) {
+            if(nums[left]===0){
                 zeroCount--
             }
             left++
         }
 
-        maxLenght = Math.max(maxLenght, right - left)
+        maxLenght = Math.max(maxLenght , right-left);
         right++
     }
     return maxLenght
 };
 
 
-const nums = [1, 1, 0, 1];
+const nums = [0, 1, 1, 1, 0, 1, 1, 0, 1];
 console.log(longestSubarray(nums))
 
