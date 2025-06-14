@@ -13,14 +13,14 @@ var longestSubarray = function (nums) {
             zeroCount++
         }
 
-        while (zeroCount > 1){
-            if(nums[left]===0){
+        while (zeroCount > 1) {
+            if (nums[left] === 0) {
                 zeroCount--
             }
             left++
         }
 
-        maxLenght = Math.max(maxLenght , right-left)
+        maxLenght = Math.max(maxLenght, right - left)
         right++
     }
     return maxLenght
