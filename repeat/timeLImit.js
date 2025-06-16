@@ -5,28 +5,11 @@
  */
 var timeLimit = function (fn, t) {
     return async function (...args) {
-        return new Promise((resolve, reject) => {
-            let isResolved = false
-            fn(...args)
-                .then(res => {
-                    if (!isResolved) {
-                        isResolved = true
-                        resolve(res)
-                    }
-                }).catch(err => {
-                    if (!isResolved) {
-                        isResolved = true;
-                        reject(err)
-                    }
-                })
-
-            setTimeout(()=>{
-                if(!isResolved){
-                    reject("Time Limit Exceeded")
-                    isResolved = true
-                }
-            } , t)
+        return Promise.race([fn(...args),
+        new Promise((_, reject) => {
+            setTimeout(() => reject("Time Limit Exceeded") , t)
         })
+        ])
     }
 };
 
@@ -37,7 +20,7 @@ const fn = async (n) => {
 };
 const start = Date.now()
 
-t = 10;
+t = 50;
 
 const func = timeLimit(fn, t)
 func(4)
