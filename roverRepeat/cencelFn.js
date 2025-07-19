@@ -8,8 +8,9 @@ var cancellable = function (fn, args, t) {
     const timer = setTimeout(() => {
         fn(...args)
     }, t)
-    fn(...args)
-    return clearTimeout(timer)
+    return function cancelFn(){
+        return clearTimeout(timer)
+    }
 };
 
 const result = [];
@@ -20,11 +21,11 @@ const fn = (x) => {
 const cencelTime = 50;
 const time = 20;
 const args = [2]
-const start = Date.now();
+const start = performance.now()
 
 const log = (...args) => {
     console.log("ishlayapti ")
-    const diff = Date.now() - start;
+    const diff = Math.floor(performance.now() - start);
     result.push({ "returned": fn(...args), "Time": diff })
 }
 const maxT = Math.max(time, cencelTime)
