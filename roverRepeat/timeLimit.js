@@ -1,19 +1,20 @@
-/**
- * @param {Function} fn
- * @param {number} t
- * @return {Function}
- */
+
 var timeLimit = function (fn, t) {
 
     return async function (...args) {
         return new Promise((resolve, reject) => {
-            fn(...args)
-                .then(res => {
-                    resolve(res)
-                })
-            setTimeout(() => {
+            const timer = setTimeout(() => {
                 reject("time limit exceeded")
             }, t)
+            fn(...args)
+                .then(res => {
+                    clearTimeout(timer)
+                    resolve(res)
+                })
+                .catch(err=>{
+                    clearTimeout(timer)
+                    reject(err)
+                })
         })
     }
 
@@ -28,17 +29,13 @@ const start = performance.now()
 
 const args = [5];
 
-const limited = timeLimit(fn, 150);
+const limited = timeLimit(fn, 50);
 
 try {
     const res = await limited(args)
-    result =  {"returned" :  res , "time" : Math.floor(performance.now()-start)}
+    result = { "returned": res, "time": Math.floor(performance.now() - start) }
 } catch (error) {
-    result =  {"rejected" :  error , "time" : Math.floor(performance.now()-start)}
+    result = { "rejected": error, "time": Math.floor(performance.now() - start) }
 }
 
 console.log(result)
-/**
- * const limited = timeLimit((t) => new Promise(res => setTimeout(res, t)), 100);
- * limited(150).catch(console.log) // "Time Limit Exceeded" at t=100ms
- */
