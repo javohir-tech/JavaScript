@@ -5,10 +5,13 @@
  */
 var debounce = function (fn, t) {
 
+    let timer
     return function (...args) {
-        const timer = setTimeout(() => {
+        if (timer) clearTimeout(timer)
+
+        timer = setTimeout(() => {
             fn(...args)
-        }, t)
+        } , t)
     }
 };
 
