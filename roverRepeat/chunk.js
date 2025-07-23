@@ -9,12 +9,14 @@ var chunk = function (arr, size) {
     for (let i = 0; i < arr.length; i += size) {
         let sectionArr = [];
         console.log(i)
-        for (let j = i; j < size+i; j++) {
-            sectionArr.push(arr[j])
+        for (let j = i; j < size + i; j++) {
+            if (arr[j]!==undefined) {
+                sectionArr.push(arr[j])
+            }
         }
         newArr.push(sectionArr)
     }
-     return newArr
+    return newArr
 };
 
 
