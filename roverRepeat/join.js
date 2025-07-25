@@ -17,19 +17,21 @@ var join = function (arr1, arr2) {
             res.set(item.id, { ...item })
         }
         else {
-            res.set(item.id , {...res.get(item.id) , ...item})
+            res.set(item.id, { ...res.get(item.id), ...item })
         }
     })
 
-    return res
+    const result = Array.from(res.values())
+    return result.sort((a, b) =>a.id-b.id)
 
 };
 
 arr1 = [
-    {"id": 1, "b": {"b": 94},"v": [4, 3], "y": 48}
-]
+    {"id": 1, "x": 1},
+    {"id": 2, "x": 9}
+],
 arr2 = [
-    {"id": 1, "b": {"c": 84}, "v": [1, 3]}
+    {"id": 3, "x": 5}
 ]
 
 console.log(join(arr1, arr2))
