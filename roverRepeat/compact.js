@@ -3,13 +3,13 @@
  * @return {Object|Array}
  */
 var compactObject = function (obj) {
-    if (Array.isArray(obj)) {
+
+    if (typeof obj === "object") {
+        const result = {};
+
         obj.forEach(item => {
-            if(Array.isArray(item)){
-                compactObject(item)
-            }else{
-                
-            }
-        })
+
+        });
     }
+
 };
