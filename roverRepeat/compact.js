@@ -10,17 +10,17 @@ var compactObject = function (obj) {
     }
 
     else if (typeof obj === "object" && obj !== null) {
-        const result = {};
+        let result = {};
 
         for (let key in obj) {
-            let compacted = compactObject(obj[key]);
+            const compacted = compactObject(obj[key])
 
             if (
                 (typeof compacted === "object" && compacted !== null && Object.keys(compacted).length > 0)
                 ||
                 (typeof compacted !== "object" && Boolean(compacted))
             ) {
-                result[key] = compacted
+                result[key] = compacted;
             }
         }
 
