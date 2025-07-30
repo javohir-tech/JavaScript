@@ -14,7 +14,8 @@ class EventEmitter {
         }
         return {
             unsubscribe: () => {
-                this.events.delete(eventName)
+                const index = this.events.get(eventName).indexOf(res)
+                this.events.get(eventName).splice(index, 1)
             }
         };
 
@@ -36,6 +37,6 @@ class EventEmitter {
 const emitter = new EventEmitter();
 const sub1 = emitter.subscribe("birinchi", function cb1(x) { return x + 1 })
 const sub2 = emitter.subscribe("birinchi", function cb2(x) { return x + 2 })
-// sub1.unsubscribe()
+sub1.unsubscribe()
 console.log(emitter.emit("birinchi", [5]))
 // console.log([1, 2, 3].join(","))
