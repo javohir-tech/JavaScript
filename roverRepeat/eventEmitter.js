@@ -12,28 +12,30 @@ class EventEmitter {
         } else {
             this.events.set(eventName, [...this.events.get(eventName), res])
         }
-        console.log(this.events)
         return {
             unsubscribe: () => {
                 this.events.delete(eventName)
-                console.log(this.events)
             }
         };
 
     }
 
     emit(eventName, args = []) {
-        this.events.get(eventName).forEach(func => {
-            func(args)
-        })
+        const result = []
+        if (this.events.has(eventName)) {
+            this.events.get(eventName).forEach(func => {
+                const res = func(...args)
+                result.push(res)
+            })
+        }
 
-        console.log(this.events)
+        return result
     }
 }
 
 const emitter = new EventEmitter();
-const sub1 = emitter.subscribe("birinchi", function cb1(...args) { return args.join(",") })
-const sub2 = emitter.subscribe("birinchi", function cb2(...args) { return args.join(",,") })
+const sub1 = emitter.subscribe("birinchi", function cb1(x) { return x + 1 })
+const sub2 = emitter.subscribe("birinchi", function cb2(x) { return x + 2 })
 // sub1.unsubscribe()
-emitter.emit("birinchi", [1, 2, 3])
-console.log([1, 2, 3].join(","))
+console.log(emitter.emit("birinchi", [5]))
+// console.log([1, 2, 3].join(","))
