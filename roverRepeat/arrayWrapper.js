@@ -12,10 +12,6 @@ class ArrayWrapper {
     toString() {
         return `[${this.args}]`
     }
-
-
-
-
 }
 
 const obj1 = new ArrayWrapper([1, 2])
