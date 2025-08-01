@@ -4,13 +4,9 @@
  * @return {boolean[]}
  */
 var kidsWithCandies = function (candies, extraCandies) {
-    let maxNum = 0;
+    let maxNum = Math.max(...candies);
     const result = []
-    candies.forEach(item => {
-        if (item > maxNum) {
-            maxNum = item;
-        }
-    })
+   
 
     candies.forEach(item => {
         result.push(item + extraCandies >= maxNum);
