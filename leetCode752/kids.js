@@ -7,7 +7,6 @@ var kidsWithCandies = function (candies, extraCandies) {
     let maxNum = Math.max(...candies);
     const result = []
    
-
     candies.forEach(item => {
         result.push(item + extraCandies >= maxNum);
     })
