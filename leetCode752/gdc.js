@@ -4,19 +4,15 @@
  * @return {string}
  */
 var gcdOfStrings = function (str1, str2) {
-    const minLen = Math.min(str1.length, str2.length);
-    let i = 0;
-    const result = []
-    while (i < minLen) {
-        if (str1[i] === str2[i]) {
-            result.push(str1[i])
-        }
-        i++
-    }
+    if (str1 + str2 !== str2 + str1) return "";
 
-    return result.join("")
+    const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+
+    let len = gcd(str1.length , str2.length)
+
+    return str1.slice(0, len)
 };
 
-const str1 = "ABABAB";
-const str2 = "ABAB"
-console.log(gcdOfStrings(str1 , str2))
+const str1 = "ABCABC";
+const str2 = "ABC"
+console.log(gcdOfStrings(str1, str2))
