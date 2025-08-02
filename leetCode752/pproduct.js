@@ -5,8 +5,10 @@
 var productExceptSelf = function (nums) {
 
     const result = [];
-    nums.forEach(item => {
-        const newArr = nums.filter(num => num !== item);
+    nums.forEach((item, index) => {
+        const newArr = [...nums]
+        newArr.splice(index, 1)
+        console.log(newArr)
         let res = 1;
         for (let i = 0; i < newArr.length; i++) {
             res *= newArr[i]
@@ -16,5 +18,5 @@ var productExceptSelf = function (nums) {
     return result
 };
 
-const nums = [0];
+const nums = [0 , 0];
 console.log(productExceptSelf(nums))
