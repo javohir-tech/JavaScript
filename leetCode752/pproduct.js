@@ -4,19 +4,23 @@
  */
 var productExceptSelf = function (nums) {
 
-    const result = [];
-    nums.forEach((item, index) => {
-        const newArr = [...nums]
-        newArr.splice(index, 1)
-        console.log(newArr)
-        let res = 1;
-        for (let i = 0; i < newArr.length; i++) {
-            res *= newArr[i]
-        }
-        result.push(res)
-    })
+    const n = nums.length;
+    const result = new Array(n).fill(1);
+
+    let prefix = 1;
+    for (let i = 0; i < n; i++) {
+        result[i] = prefix;
+        prefix *= nums[i]
+    }
+
+    let suffix = 1;
+    for (let i = n - 1; i >= 0; i--) {
+        result[i] *= suffix;
+        suffix *= nums[i]
+    }
+
     return result
 };
 
-const nums = [0 , 0];
+const nums = [1, 2, 3, 4];
 console.log(productExceptSelf(nums))
