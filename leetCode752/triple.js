@@ -4,21 +4,27 @@
  */
 var increasingTriplet = function (nums) {
 
-    let boshlangich = nums[0];
-    let result = []
-    for (let i = 1; i < nums.length; i++) {
-        if (nums[i] > boshlangich) {
-            result.push(boshlangich);
-            // boshlangich = nums[i];
-            console.log(result)
-        } else if (nums[i] < boshlangich) {
-            result = []
+    let count = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        let first = nums[i]
+        for (let j = i + 1; j < 3; j++) {
+            if (nums[j] > first) {
+                // console.log(first)
+                first = nums[j]
+                count += 1
+                console.log(true)
+                // return true
+            }
+            // console.log(count)
+            console.log(j)
         }
-        boshlangich = nums[i]
-        // console.log(boshlangich)
+        count = 0
     }
-    return result
+
+    return false
+
 };
 
-const nums = [2, 1, 5, 0, 4, 6];
+const nums = [2, 4, -2, -3];
 console.log(increasingTriplet(nums))
