@@ -19,6 +19,7 @@ var increasingTriplet = function (nums) {
             // console.log(count)
             console.log(j)
         }
+        console.log("salom")
         count = 0
     }
 
