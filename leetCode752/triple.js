@@ -10,9 +10,9 @@ var increasingTriplet = function (nums) {
     for (let num of nums) {
         if (num <= first) {
             first = num;
-        }else if(num <=second ){
+        } else if (num <= second) {
             second = num
-        }else{
+        } else {
             return true
         }
     }
