@@ -4,23 +4,17 @@
  */
 var increasingTriplet = function (nums) {
 
-    let count = 0;
+    let first = Infinity;
+    let second = Infinity;
 
-    for (let i = 0; i < nums.length; i++) {
-        let first = nums[i]
-        for (let j = i + 1; j < 3; j++) {
-            if (nums[j] > first) {
-                // console.log(first)
-                first = nums[j]
-                count += 1
-                console.log(true)
-                // return true
-            }
-            // console.log(count)
-            console.log(j)
+    for (let num of nums) {
+        if (num <= first) {
+            first = num;
+        }else if(num <=second ){
+            second = num
+        }else{
+            return true
         }
-        console.log("salom")
-        count = 0
     }
 
     return false
