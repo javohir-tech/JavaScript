@@ -1,5 +1,6 @@
 function longestPalindrome(s) {
-    if (s.length < 2) return s
+
+    if (s.length < 2) return s;
 
     let start = 0; end = 0;
 
@@ -8,7 +9,7 @@ function longestPalindrome(s) {
             left--;
             rigth++
         }
-        return [left + 1, rigth - 1]
+        return [left + 1, rigth - 1];
     }
 
     for (let i = 0; i < s.length; i++) {
@@ -19,18 +20,16 @@ function longestPalindrome(s) {
 
         if (r1 - l1 > end - start) {
             start = l1;
-            end = r1;
+            end = r1
         }
 
         if (r2 - l2 > end - start) {
             start = l2;
-            end = r2;
+            end = r2
         }
     }
 
-    return s.substring(start , end+1);
-
-
+    return s.substring(start, end + 1)
 }
 
 // Test
