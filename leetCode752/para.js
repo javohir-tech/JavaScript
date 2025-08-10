@@ -1,34 +1,36 @@
 function longestPalindrome(s) {
-  if (s.length < 2) return s;
+    if (s.length < 2) return s
 
-  let start = 0, end = 0;
+    let start = 0; end = 0;
 
-  // Markazdan kengaytirish funksiyasi
-  function expandAroundCenter(left, right) {
-    while (left >= 0 && right < s.length && s[left] === s[right]) {
-      left--;
-      right++;
+    function chegara(left, rigth) {
+        while (left >= 0 && rigth < s.length && s[left] === s[rigth]) {
+            left--;
+            rigth++
+        }
+        return [left + 1, rigth - 1]
     }
-    return [left + 1, right - 1]; // haqiqiy palindrom chegaralari
-  }
 
-  for (let i = 0; i < s.length; i++) {
-    // Toq uzunlikli palindrom
-    let [l1, r1] = expandAroundCenter(i, i);
-    // Juft uzunlikli palindrom
-    let [l2, r2] = expandAroundCenter(i, i + 1);
+    for (let i = 0; i < s.length; i++) {
 
-    if (r1 - l1 > end - start) {
-      start = l1;
-      end = r1;
+        let [l1, r1] = chegara(i, i);
+
+        let [l2, r2] = chegara(i, i + 1);
+
+        if (r1 - l1 > end - start) {
+            start = l1;
+            end = r1;
+        }
+
+        if (r2 - l2 > end - start) {
+            start = l2;
+            end = r2;
+        }
     }
-    if (r2 - l2 > end - start) {
-      start = l2;
-      end = r2;
-    }
-  }
 
-  return s.substring(start, end + 1);
+    return s.substring(start , end+1);
+
+
 }
 
 // Test
