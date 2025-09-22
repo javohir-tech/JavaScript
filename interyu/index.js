@@ -1,9 +1,6 @@
-const arr = [1, 2, 3, 4]
+const arr = [1, 2, 3, 4, 2]
 
-arr.forEach((item, index, array) => {
-    console.log("item" , item);
-    console.log("index" , index);
-    console.log("array" , array)
-})
+// console.log(arr.indexOf(2))
+// console.log(arr.lastIndexOf(2))
 
 
