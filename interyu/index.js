@@ -1,12 +1,18 @@
-function getUser(callBack) {
+const birinchiPromise = new Promise((resolve, reject) => {
     setTimeout(() => {
-        callBack("http so'rovimiz javobi !")
-    }, 2000)
-}
+        let natija = "Uddaladim";
+        resolve(natija)
+    }, 10000)
+})
 
-//callback function
-function myFn(response) {
-    console.log(response)
-}
-
-getUser(myFn)
+birinchiPromise.then(res => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("birinchi promisedan kelgan habar : " + res)
+        }, 5000)
+    });
+}).then(res => {
+    setTimeout(() => {
+        console.log("oxirgi natija : " + res)
+    }, 5000)
+})
