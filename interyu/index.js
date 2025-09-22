@@ -1,8 +1,18 @@
-const user1 = { age: 21 };
+function myFunction() {
+    return "hello"
+}
 
-const user2 = {...user1};
+function seyHello(func, name) {
+    return func() + " " + name
+}
 
-user2.age = 22;
+console.log(seyHello(myFunction, "javohir"))
 
-console.log(user1.age)
-console.log(user2.age)
+function returnFunction() {
+    return function () {
+        return "hello"
+    }
+}
+
+const func =  returnFunction()
+console.log(func())
