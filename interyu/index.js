@@ -1,8 +1,9 @@
 const arr = [1, 2, 3, 4]
-const arr1 = [1, 2, 3, 4];
 
-const newArr= arr.concat(arr1)
-console.log(arr)
-console.log(newArr)
+arr.forEach((item, index, array) => {
+    console.log("item" , item);
+    console.log("index" , index);
+    console.log("array" , array)
+})
 
 
