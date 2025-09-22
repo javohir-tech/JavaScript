@@ -1,10 +1,7 @@
 // let myAge = 21;
 
-const emp = {
-    name: "Javohir",
-    age: 21,
-    firstName: "Suvonov"
-}
+const user = { name: "Josh", address: { country: "Uzb", city: "Tashkent" } };
 
-const { name: ism = "Ulugbek", age, firstName ,  } = emp
-console.log(ism)
+const {name , address : {country , city}} = user
+
+console.log(city)
