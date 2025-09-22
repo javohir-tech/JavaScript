@@ -1,18 +1,8 @@
-function myFunction() {
-    return "hello"
-}
+const arr = [1, 2, 3, 4]
 
-function seyHello(func, name) {
-    return func() + " " + name
-}
+const deleted = arr.shift();
 
-console.log(seyHello(myFunction, "javohir"))
+console.log(arr.unshift("salom"), "kuzat")
 
-function returnFunction() {
-    return function () {
-        return "hello"
-    }
-}
-
-const func =  returnFunction()
-console.log(func())
+console.log(deleted)
+console.log(arr)
