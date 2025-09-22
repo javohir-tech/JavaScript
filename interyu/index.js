@@ -1,8 +1,5 @@
 const arr = [1, 2, 3, 4]
 
-const deleted = arr.shift();
-
-console.log(arr.unshift("salom"), "kuzat")
-
+const deleted = arr.slice(1 , 3)
 console.log(deleted)
 console.log(arr)
