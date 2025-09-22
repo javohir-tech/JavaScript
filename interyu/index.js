@@ -1,7 +1,8 @@
-const user = {
-    name: "Javohir",
-    age: 21,
-}
+const user1 = { age: 21 };
 
-console.log(user?.address?.city)
-console.log("salom dunyo")
+const user2 = {...user1};
+
+user2.age = 22;
+
+console.log(user1.age)
+console.log(user2.age)
