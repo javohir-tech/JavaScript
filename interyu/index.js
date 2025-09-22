@@ -1,10 +1,10 @@
-let myAge = 21;
+// let myAge = 21;
 
-const ages = [21, 23, 24, 34, 19];
+const emp = {
+    name: "Javohir",
+    age: 21,
+    firstName: "Suvonov"
+}
 
-const doubleAges = ages.map((item, index, array) => {
-   return item *= 2;
-    console.log(array)
-})
-
-console.log(doubleAges)
+const { name: ism = "Ulugbek", age, firstName ,  } = emp
+console.log(ism)
