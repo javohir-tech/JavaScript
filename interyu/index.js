@@ -1,18 +1,30 @@
-const birinchiPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        let natija = "Uddaladim";
-        resolve(natija)
-    }, 10000)
-})
+const apiUrl = "https://jsonplaceholder.typicode.com/users";
 
-birinchiPromise.then(res => {
+function getUsers(method, url, body) {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve("birinchi promisedan kelgan habar : " + res)
-        }, 5000)
-    });
-}).then(res => {
-    setTimeout(() => {
-        console.log("oxirgi natija : " + res)
-    }, 5000)
-})
+        const xhr = new XMLHttpRequest();
+
+        xhr.open(method, url);
+        xhr.onload = function () {
+            if (this.status >= 200 && this.status < 300) resolve(xhr.response);
+            else reject({ status: this.status, statusText: this.statusText });
+        }
+
+        xhr.onerror = function () {
+            reject({
+                status: this.status,
+                statusText: this.statusText
+            })
+        }
+
+        xhr.send(body)
+    })
+}
+
+getUsers('GET', apiUrl)
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => {
+        console.log(err)
+    })
