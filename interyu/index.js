@@ -1,18 +1,19 @@
-const myPromise = new Promise((resolve, reject) => {
-    const success = true;
-    if (success) {
-        resolve("Hammsi yaaxshi")
-    } else {
-        reject("xatolik")
-    }
-})
+const internet = true;
 
-async function getDat() {
-    try {
-        const res = await myPromise;
-        console.log("natija : " ,  res)
-    } catch (error) {
-        console.log(error)
-    }
+function getData() {
+    return new Promise((resolve, reject) => {
+        if (internet) {
+            resolve("Some Data")
+        } else {
+            reject("Some Error")
+        }
+    })
 }
-getDat()
+
+getData()
+    .then((res) => {
+        console.log(res)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
