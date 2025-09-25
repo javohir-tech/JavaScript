@@ -1,14 +1,13 @@
-let obj = {
-    name: "Javohir",
-    exec : function(){
-        console.log(this.name)
+const person = {
+    isHuman : false,
+    printName(){
+        console.log(`My name is${this.name} . Am i human ? : ${this.isHuman}`)
     }
 }
 
-const method1 = Object.assign({}, obj);
-const method2 = JSON.parse(JSON.stringify(obj));
-const method3 = {...obj}
+const javohir = Object.create(person);
 
-console.log(method1)
-console.log(method2)
-console.log(method3)
+javohir.name = "Javohir";
+javohir.isHuman = true;
+
+javohir.printName()
