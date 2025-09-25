@@ -1,13 +1,13 @@
-function user(name) {
-    this.name = name
+function updateDate(obj) {
+    obj.brand = "toyoto"
 }
 
-user.prototype.sayHi = function () {
-    console.log(`hello  ${this.name}`)
+const car = {
+    brand: "Honda",
+    model: "Accord",
+    year: 1998,
 }
 
-const user1 = new user("Ali");
-const user2 = new user("Vali");
-
-user1.sayHi()
-user2.sayHi()
+console.log(car)
+updateDate(car);
+console.log(car)
