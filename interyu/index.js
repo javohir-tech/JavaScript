@@ -1,19 +1,17 @@
-const internet = true;
+const request = new XMLHttpRequest()
 
-function getData() {
-    return new Promise((resolve, reject) => {
-        if (internet) {
-            resolve("Some Data")
-        } else {
-            reject("Some Error")
-        }
-    })
-}
+request.addEventListener('readystatechange', () => {
+    // console.log(request, request.readyState)
+    if (request.readyState === 4) {
+        console.log(request.responseText)
+    }
+})
 
-getData()
-    .then((res) => {
-        console.log(res)
-    })
-    .catch((err)=>{
-        console.log(err)
-    })
+request.open('GET', "https://jsonplaceholder.typicode.com/users")
+
+request.send()
+
+// 1 open tayyor
+// 2 send qilindi
+// 3 loading...
+// 4 tayyor
