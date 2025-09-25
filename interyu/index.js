@@ -1,6 +1,6 @@
 const user = {
     age: 21,
-    toString() {
+    toString(){
         return String(this.age)
     }
 }
@@ -12,5 +12,5 @@ const user2 = {
     }
 }
 
-const num = user > user2;
+const num = 10*user
 console.log(num)
