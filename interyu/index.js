@@ -1,16 +1,20 @@
-const user = {
-    age: 21,
-    toString(){
-        return String(this.age)
-    }
+function copy(mainObj){
+    const copyObj = {};
+    for(let key in mainObj){
+        copyObj[key] =  mainObj[key]
+    };
+
+    copyObj.a = 1
+    return copyObj
 }
 
-const user2 = {
-    age: 19,
-    valueOf() {
-        return this.age
-    }
+const mainObj = {
+  a: 2,
+  b: 5,
+  c: {
+    x: 7,
+    y: 4,
+  },
 }
 
-const num = 10*user
-console.log(num)
+console.log(copy(mainObj), "nusxalangan object")
