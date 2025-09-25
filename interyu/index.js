@@ -1,18 +1,16 @@
-function user(name, age) {
-    this.name = name;
-    this.age = age
+const user = {
+    age: 21,
+    toString() {
+        return String(this.age)
+    }
 }
 
-const javohir = new user("Javohir", new Date(2004, 4, 29));
-
-console.log(javohir)
-
-Object.defineProperty(this, "age", {
-    get() {
-        let today = new Date().getFullYear();
-        return  today - this.age.getFullYear()
+const user2 = {
+    age: 19,
+    valueOf() {
+        return this.age
     }
-})
+}
 
-console.log(javohir.name)
-console.log(javohir.age)
+const num = user > user2;
+console.log(num)
