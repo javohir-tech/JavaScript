@@ -1,12 +1,4 @@
-function copy(mainObj){
-    const copyObj = {};
-    for(let key in mainObj){
-        copyObj[key] =  mainObj[key]
-    };
 
-    copyObj.a = 1
-    return copyObj
-}
 
 const mainObj = {
   a: 2,
@@ -17,4 +9,7 @@ const mainObj = {
   },
 }
 
-console.log(copy(mainObj), "nusxalangan object")
+const copyObj = Object.assign({} , mainObj)
+copyObj.a = 13
+console.log(copyObj)
+console.log(mainObj)
