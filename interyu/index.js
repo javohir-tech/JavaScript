@@ -1,15 +1,14 @@
-
-
-const mainObj = {
-  a: 2,
-  b: 5,
-  c: {
-    x: 7,
-    y: 4,
-  },
+let obj = {
+    name: "Javohir",
+    exec : function(){
+        console.log(this.name)
+    }
 }
 
-const copyObj = Object.assign({} , mainObj)
-copyObj.a = 13
-console.log(copyObj)
-console.log(mainObj)
+const method1 = Object.assign({}, obj);
+const method2 = JSON.parse(JSON.stringify(obj));
+const method3 = {...obj}
+
+console.log(method1)
+console.log(method2)
+console.log(method3)
