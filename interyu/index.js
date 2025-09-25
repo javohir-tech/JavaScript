@@ -1,4 +1,4 @@
-function getUsers(callback) {
+function getUsers(apiUrl, callback) {
     const request = new XMLHttpRequest()
 
     request.addEventListener('readystatechange', () => {
@@ -11,16 +11,18 @@ function getUsers(callback) {
         }
     })
 
-    request.open('GET', "user.json")
+    request.open('GET', apiUrl)
 
     request.send()
 }
 
-getUsers((data, err) => {
-    if (data) {
-        console.log(data)
-    } else {
-        console.log(err)
-    }
+getUsers("./Todos/user.json", (data, err) => {
+    console.log(data , "user")
+    getUsers("./Todos/javohir.json", (data, err) => {
+        console.log(data ,"javohir")
+        getUsers("./Todos/suvonov.json", (data, err) => {
+            console.log(data, "suvonov")
+        })
+    })
 })
 
