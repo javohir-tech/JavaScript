@@ -1,13 +1,11 @@
-function updateDate(obj) {
-    obj.brand = "toyoto"
+function parseFn(str) {
+    try {
+        return JSON.parse(str)
+    } catch (error) {
+        console.log("format notogri" + error);
+        null;
+    }
 }
 
-const car = {
-    brand: "Honda",
-    model: "Accord",
-    year: 1998,
-}
-
-console.log(car)
-updateDate(car);
-console.log(car)
+console.log(parseFn('{"name":"Ali"}'))
+console.log(parseFn('{"name":"Ali"}'))
