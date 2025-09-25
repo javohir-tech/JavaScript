@@ -9,7 +9,10 @@ Object.defineProperty(user, "fullName", {
     },
     set(value) {
         [this.name, this.firstName] = value.split(" ")
-    }
+    },
+    writable: true, // o'zgartirsa bo'ladi 
+    enumerable: true, // for...in orqali ko'rinadi
+    configurable: false // o'chirip bo'lmaydi  
 })
 
 console.log(user.fullName)
