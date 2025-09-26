@@ -18,31 +18,12 @@ function getUser(apiUrl) {
 
 }
 
-function getUser(apiUrl) {
-    return new Promise((resolve, reject) => {
-        const request = new XMLHttpRequest();
-
-        request.addEventListener('readystatechange', () => {
-            if (request.readyState === 4 && request.status === 200) {
-                const data = JSON.parse(request.responseText)
-                resolve(data)
-            } else if (request.readyState === 4) {
-                reject("Ma'lumot olishni iloji bo'lmadi ")
-            }
-        });
-
-        request.open("GET", apiUrl);
-
-        request.send();
-    })
-
-}
 
 // async/await
 
 async function showUsers() {
     try {
-        const user = await getUser("'https://jsonplaceholder.typicode.com/users");
+        const user = await getUser("https://jsonplaceholder.typicode.com/users");
         console.log(user)
     } catch (error) {
         console.log(error)
