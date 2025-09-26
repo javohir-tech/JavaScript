@@ -17,13 +17,28 @@ function getUsers(apiUrl) {
     })
 }
 
-getUsers("https://jsonplaceholder.typicode.com/users")
-    .then(res => {
-        console.log(res)
-    })
-    .catch(err => [
-        console.log(err)
-    ])
+console.log(1)
+console.log(2)
+// getUsers("https://jsonplaceholder.typicode.com/users")
+//     .then(res => {
+//         console.log(res)
+//     })
+//     .catch(err => [
+//         console.log(err)
+//     ])
+
+async function showusers() {
+    try {
+        const data = await getUsers("https://jsonplaceholder.typicode.com/users");
+        console.log(data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+showusers()
+console.log(3)
+console.log(4)
 
 // const request = new XMLHttpRequest();
 
