@@ -1,3 +1,8 @@
+// 1. javaScript sixron ishlagani uchun hamma funksiyalar va kodlar dastlap call stckga tushadi 
+// 2. lekin asinxron kodlar bu yerda emas wep apida (brauzer yoki node js taqdim qiladi) ishlaydi va callback
+//queue ga tushadi 
+// 3. hullas event loop asinxron kodni olip call stackda emas web api da ishlaydi 
+// va callback queue da natigani saqlaydi call stack bo'shagandan keyin call  stackga olip keladi 
 function getUsers(apiUrl) {
 
     return new Promise((resolve, reject) => {
