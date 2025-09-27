@@ -3,33 +3,43 @@
 //queue ga tushadi 
 // 3. hullas event loop asinxron kodni olip call stackda emas web api da ishlaydi 
 // va callback queue da natigani saqlaydi call stack bo'shagandan keyin call  stackga olip keladi 
-function getUsers(apiUrl) {
 
-    return new Promise((resolve, reject) => {
-        const requst = new XMLHttpRequest();
+// function getUsers(apiUrl) {
 
-        requst.addEventListener("readystatechange", () => {
-            if (requst.readyState === 4 && requst.status === 200) {
-                const data = JSON.parse(requst.responseText);
-                resolve(data)
-            } else if (requst.readyState === 4) {
-                reject("Ma'lumot olsihni iloji bo'lmadi")
-            }
-        })
+//     return new Promise((resolve, reject) => {
+//         const requst = new XMLHttpRequest();
 
-        requst.open("GET", apiUrl);
+//         requst.addEventListener("readystatechange", () => {
+//             if (requst.readyState === 4 && requst.status === 200) {
+//                 const data = JSON.parse(requst.responseText);
+//                 resolve(data)
+//             } else if (requst.readyState === 4) {
+//                 reject("Ma'lumot olsihni iloji bo'lmadi")
+//             }
+//         })
 
-        requst.send();
-    })
-}
+//         requst.open("GET", apiUrl);
 
-async function showUsers() {
-    try {
-        const res = await getUsers("https://jsonplaceholder.typicode.com/users");
-        console.log(res)
-    } catch (error) {
-        console.log(error)
-    }
-}
+//         requst.send();
+//     })
+// }
 
-showUsers()
+// async function showUsers() {
+//     try {
+//         const res = await getUsers("https://jsonplaceholder.typicode.com/users");
+//         console.log(res)
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
+
+// showUsers()
+
+console.log(1);
+setTimeout(() => {
+    console.log(2)
+} , 0)
+
+Promise.resolve().then(() => console.log(3));
+
+console.log(4)
