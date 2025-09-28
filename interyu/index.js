@@ -25,3 +25,6 @@ function updateDisplay(verse) {
             poemDisplay.text = `Could not fetch verse : ${err}`
         })
 }
+
+updateDisplay("Verse 1");
+verseChoose.value = "Verse 1";
