@@ -1,45 +1,29 @@
-// 1. javaScript sixron ishlagani uchun hamma funksiyalar va kodlar dastlap call stckga tushadi 
-// 2. lekin asinxron kodlar bu yerda emas wep apida (brauzer yoki node js taqdim qiladi) ishlaydi va callback
-//queue ga tushadi 
-// 3. hullas event loop asinxron kodni olip call stackda emas web api da ishlaydi 
-// va callback queue da natigani saqlaydi call stack bo'shagandan keyin call  stackga olip keladi 
+function getUsers(urlApi) {
+    return new Promise((resolve, reject) => {
+        const request = new XMLHttpRequest();
 
-// function getUsers(apiUrl) {
+        request.addEventListener("readystatechange", () => {
+            if (request.readyState === 4 && request.status) {
+                const data = JSON.parse(request.responseText)
+                resolve(data)
+            } else if (request.readyState === 4) {
+                reject("Ma'lumot olsihni iloji bo'lmadi")
+            }
+        })
 
-//     return new Promise((resolve, reject) => {
-//         const requst = new XMLHttpRequest();
+        request.open("GET", urlApi);
 
-//         requst.addEventListener("readystatechange", () => {
-//             if (requst.readyState === 4 && requst.status === 200) {
-//                 const data = JSON.parse(requst.responseText);
-//                 resolve(data)
-//             } else if (requst.readyState === 4) {
-//                 reject("Ma'lumot olsihni iloji bo'lmadi")
-//             }
-//         })
+        request.send()
+    })
+}
 
-//         requst.open("GET", apiUrl);
+async function showusers() {
+    try {
+        const res = await getUsers("https://jsonplaceholder.typicode.com/users");
+        console.log(res)
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-//         requst.send();
-//     })
-// }
-
-// async function showUsers() {
-//     try {
-//         const res = await getUsers("https://jsonplaceholder.typicode.com/users");
-//         console.log(res)
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
-
-// showUsers()
-
-console.log(1);
-setTimeout(() => {
-    console.log(2)
-} , 0)
-
-Promise.resolve().then(() => console.log(3));
-
-console.log(4)
+showusers()
