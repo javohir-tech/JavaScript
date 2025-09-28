@@ -1,30 +1,27 @@
-function getUsers(urlApi) {
-    return new Promise((resolve, reject) => {
-        
-        const request = new XMLHttpRequest();
+const verseChoose = document.querySelector('select');
+const poemDisplay = document.querySelector('pre');
 
-        request.addEventListener("readystatechange", () => {
-            if (request.readyState === 4 && request.status) {
-                const data = JSON.parse(request.responseText)
-                resolve(data)
-            } else if (request.readyState === 4) {
-                reject("Ma'lumot olsihni iloji bo'lmadi")
+verseChoose.addEventListener('change', () => {
+    const verse = verseChoose.value;
+    updateDisplay(verse)
+})
+
+function updateDisplay(verse) {
+    verse = verse.replace(" ", "").toLowerCase();
+    const url = `./Texts/${verse}.txt`;
+
+    fetch(url)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP Error : ${response.status}`)
             }
+
+            return response.text();
         })
-
-        request.open("GET", urlApi);
-
-        request.send()
-    })
+        .then((text) => {
+            poemDisplay.textContent = text
+        })
+        .catch(err=>{
+            poemDisplay.textContent = `Could not fetch verse ${err}`
+        })
 }
-
-async function showusers() {
-    try {
-        const res = await getUsers("https://jsonplaceholder.typicode.com/users");
-        console.log(res)
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-showusers()
