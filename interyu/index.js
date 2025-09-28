@@ -11,17 +11,17 @@ function updateDisplay(verse) {
     const url = `./Texts/${verse}.txt`;
 
     fetch(url)
-        .then((response) => {
-            if (!response.ok) {
-                throw new Error(`HTTP Error : ${response.status}`)
+        .then(res => {
+            if (!res.ok) {
+                throw new Error(`HTTP ERROR : ${res.status}`)
             }
 
-            return response.text();
+            return res.text();
         })
-        .then((text) => {
+        .then(text => {
             poemDisplay.textContent = text
         })
-        .catch(err=>{
-            poemDisplay.textContent = `Could not fetch verse ${err}`
+        .catch(err => {
+            poemDisplay.text = `Could not fetch verse : ${err}`
         })
 }
