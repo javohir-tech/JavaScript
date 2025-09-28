@@ -1,5 +1,6 @@
 function getUsers(urlApi) {
     return new Promise((resolve, reject) => {
+        
         const request = new XMLHttpRequest();
 
         request.addEventListener("readystatechange", () => {
