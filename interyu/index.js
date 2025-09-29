@@ -1,4 +1,6 @@
-import Main from './main.js';
+// import {dafault as Bye , sayHi as Hi} from './main.js';
 
-const users = new Main("javohir")
-console.log(users)
+let { sayBye, sayHi } = await import("./main.js");
+
+sayHi("Javohir")
+sayBye("Javohir")
