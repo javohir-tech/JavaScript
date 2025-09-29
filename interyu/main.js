@@ -1,3 +1,9 @@
-import { sayBye } from "./index.js";
+export default class User{
+    constructor(name){
+        this.name = name
+    }
+}
 
-sayBye("Javohir")
+export function sayHi(obj){
+    console.log(`Hello ${obj.name}`)
+}

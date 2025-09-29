@@ -1,9 +1,5 @@
-function sayHi(name) {
-  console.log(`Hello ${name}`)
-}
+import {sayHi , default as User} from "./main.js"
 
-function sayBye(name) {
-  console.log(`good bye ${name}`)
-}
+const users = new User("Javohir");
 
-export { sayBye , sayHi}
+sayHi(users)
