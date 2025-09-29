@@ -1,5 +1,6 @@
-import {sayHi , default as User} from "./main.js"
+import *as users from "./main.js"
 
-const users = new User("Javohir");
+const  user = users.default
+const javohir = new user("Javohir");
 
-sayHi(users)
+users.sayHi(javohir)
