@@ -1,3 +1,5 @@
-export const admin = {
-    name : "Javohir"
+export const config = {};
+
+export function sayHi(){
+    console.log(`Hello ${config.name}`)
 }

@@ -1,3 +1,3 @@
-import { admin } from "./main.js";
+import { sayHi } from "./main.js";
 
-admin.name = "Suvonov"
+sayHi()

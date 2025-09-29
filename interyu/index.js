@@ -1,3 +1,3 @@
-import { admin } from "./main.js";
+import { config } from "./main.js";
 
-console.log(admin)
+config.name = "Javohir"
