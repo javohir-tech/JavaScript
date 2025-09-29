@@ -17,7 +17,7 @@ function initialize(products) {
   // grab the UI elements that we need to manipulate
   const category = document.querySelector('#category');
   const searchTerm = document.querySelector('#searchTerm');
-  const searchBtn = document.querySelector('button');
+  const searchBtn = document.querySelector('button');   
   const main = document.querySelector('main');
 
   // keep a record of what the last category and search term entered were
