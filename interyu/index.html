@@ -1,62 +1,53 @@
 <!DOCTYPE html>
 <html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Can Store</title>
+    <link href="https://fonts.googleapis.com/css?family=Cherry+Swash|Raleway" rel="stylesheet">
+    <link href="./main.css" rel="stylesheet">
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fetch starting point</title>
+  </head>
 
-    <style>
-        html,
-        pre {
-            font-family: sans-serif;
-        }
+  <body>
+    <header>
+      <h1>The Can Store</h1>
+    </header>
+    <div>
+      <aside>
+        <form>
+          <div>
+            <label for="category">Choose a category:</label>
+            <select id="category">
+              <option selected>All</option>
+              <option>Vegetables</option>
+              <option>Meat</option>
+              <option>Soup</option>
+            </select>
+          </div>
+          <div>
+            <label for="searchTerm">Enter search term:</label>
+            <input type="text" id="searchTerm" placeholder="e.g. beans">
+          </div>
+          <div>
+            <button>Filter results</button>
+          </div>
+        </form>
+      </aside>
+      <main>
 
-        body {
-            width: 500px;
-            margin: 0 auto;
-            background-color: #ccc;
-        }
+      </main>
+    </div>
+    <footer>
+      <p>All icons found at the Noun Project:</p>
 
-        pre {
-            line-height: 1.5;
-            letter-spacing: 0.05rem;
-            padding: 1rem;
-            background-color: white;
-        }
-
-        label {
-            width: 200px;
-            margin-right: 33px;
-        }
-
-        select {
-            width: 350px;
-            padding: 5px;
-        }
-    </style>
-</head>
-
-<body>
-
-    <h1>Fetch starting point</h1>
-
-    <form>
-        <label for="verse-choose">Choose a verse</label>
-        <select id="verse-choose" name="verse-choose">
-            <option>Verse 1</option>
-            <option>Verse 2</option>
-            <option>Verse 3</option>
-            <option>Verse 4</option>
-        </select>
-    </form>
-
-    <h2>The Conqueror Worm, <em>Edgar Allen Poe, 1843</em></h2>
-
-   <pre></pre>
-
-    <script></script>
-    <script src="index.js"></script>    
-</body>
-
+      <ul>
+        <li>Bean can icon by <a href="https://thenounproject.com/yalanis/">Yazmin Alanis</a></li>
+        <li>Vegetable icon by <a href="https://thenounproject.com/skatakila/">Ricardo Moreira</a></li>
+        <li>Soup icon by <a href="https://thenounproject.com/ArtZ91/">Arthur Shlain</a></li>
+        <li>Meat Chunk icon by <a href="https://thenounproject.com/smashicons/">Oliviu Stoian</a>.</li>
+      </ul>
+    </footer>
+    <script src="./index.js"></script>
+  </body>
 </html>
