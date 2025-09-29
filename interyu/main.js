@@ -1,5 +1,3 @@
-export const config = {};
+import { sayBye } from "./index.js";
 
-export function sayHi(){
-    console.log(`Hello ${config.name}`)
-}
+sayBye("Javohir")

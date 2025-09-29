@@ -1,3 +1,4 @@
-import { sayHi } from "./main.js";
+import * as index from "./index.js";
 
-sayHi()
+index.sayBye("javohir")
+index.sayHi("Javohir")
