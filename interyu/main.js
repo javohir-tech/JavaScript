@@ -1,1 +1,3 @@
-export let name =  "javohir"
+export const admin = {
+    name : "Javohir"
+}

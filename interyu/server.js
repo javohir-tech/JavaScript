@@ -1,3 +1,3 @@
 import { admin } from "./main.js";
 
-console.log(admin)
+admin.name = "Suvonov"
