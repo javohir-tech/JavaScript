@@ -1,14 +1,12 @@
-class Car {
-    constructor(name, year) {
-        this.name = name;
-        this.year = year
-    }
-
-    signal() {
-        console.log(`this car is ${this.name} and it's year is ${this.year}`)
-    }
+function Car(model, year) {
+    this.model = model;
+    this.year = year;
 }
 
-const bmw = new Car("BMW", 2014);
+Car.prototype.signal = function () {
+    console.log(`${this.model} signal chalayapti `)
+}
+
+const bmw = new Car('BMW', 2014);
 console.log(bmw);
 bmw.signal()
