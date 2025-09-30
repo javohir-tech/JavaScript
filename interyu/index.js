@@ -1,28 +1,14 @@
-function getUsers(apiURl) {
-    return new Promise((resolve, reject) => {
+class Car {
+    constructor(name, year) {
+        this.name = name;
+        this.year = year
+    }
 
-        const request = new XMLHttpRequest();
-
-        request.addEventListener('readystatechange', () => {
-            if (request.readyState === 4 && request.status === 400) {
-                const data = JSON.parse(request.responseText);
-                resolve(data)
-            } else if (request.readyState === 4) {
-                reject("Ma'lumotlarni olishni iloji bo'lmadi")
-            }
-        })
-
-        request.open('GET', apiURl);
-
-        request.send();
-
-    })
+    signal() {
+        console.log(`this car is ${this.name} and it's year is ${this.year}`)
+    }
 }
 
-getUsers('./Todos/suvonov.json')
-    .then(res =>{
-        console.log(res)
-    })
-    .catch(err=>{
-        console.log(err)
-    })
+const bmw = new Car("BMW", 2024);
+console.log(bmw);
+bmw.signal()
