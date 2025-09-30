@@ -9,6 +9,6 @@ class Car {
     }
 }
 
-const bmw = new Car("BMW", 2024);
+const bmw = new Car("BMW", 2014);
 console.log(bmw);
 bmw.signal()
