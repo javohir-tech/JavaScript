@@ -1,36 +1,38 @@
-let open = indexedDB.open('mening bazam', 1);
+let open = indexedDB.open('mening bazam', 3);
 
 open.onupgradeneeded = (event) => {
+
     let db = event.target.result;
-    db.createObjectStore('users', { keyPath: 'id' });
-    console.log('yangi baza va jadval yaratildi ')
+
+    if (!db.objectStoreNames.contains('users')) {
+        db.createObjectStore('users', { keyPath: 'id', autoIncrement: true });
+        console.log('yangi baza va jadval yaratildi ')
+    }
 }
 
 open.onsuccess = (event) => {
-    let db = event.target.result;
-    console.log(`baza ochildi`, db)
+
+    const db = event.target.result;
 
     let transaction = db.transaction('users', 'readwrite');
     let store = transaction.objectStore('users');
 
-    const user = {
-        id: 1,
+    let user = {
         name: 'Javohir',
         age: 21
     }
 
-    let request = store.add(user);
+    const request = store.add(user);
 
     request.onsuccess = () => {
-        console.log('malumot bzaga qoshildi')
+        console.log('user storega qoshildi')
     }
 
     request.onerror = (event) => {
-        console.log('maalumot bazaga qoshilmadi', event.target.error)
+        console.log(`xato : ${event.target.error}`)
     }
-
 }
 
 open.onerror = (event) => {
-    console.log('xato: ', event.target.result)
+    console.log('Xato baza yaratilmadi : ', event.target.error)
 }
