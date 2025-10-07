@@ -16,10 +16,15 @@ localStorage.setItem('email', 'suvonovjavohir625@gmail.com');
 //     console.log(key)
 // }
 
-const keys = Object.keys(localStorage);
-console.log(keys)
-for (let key in keys) {
-    console.log(`${keys[key]} ---- ${localStorage[keys[key]]}`)
-}
+// const keys = Object.keys(localStorage);
+// console.log(keys)
+// for (let key in keys) {
+//     console.log(`${keys[key]} ---- ${localStorage[keys[key]]}`)
+// }
+
+console.log({ name: 'javohir' })
+console.log(JSON.stringify({ name: 'javohir' }))
+const user = JSON.stringify({ name: 'javohir' });
+console.log(JSON.parse(user))
 
 // console.log(1)
