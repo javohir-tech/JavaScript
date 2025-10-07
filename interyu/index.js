@@ -1,30 +1,36 @@
-localStorage.setItem('token', 123);
-localStorage.setItem('user', 'javohir');
-localStorage.setItem('email', 'suvonovjavohir625@gmail.com');
+let open = indexedDB.open('mening bazam', 1);
 
-// console.log(localStorage.key(0))
+open.onupgradeneeded = (event) => {
+    let db = event.target.result;
+    db.createObjectStore('users', { keyPath: 'id' });
+    console.log('yangi baza va jadval yaratildi ')
+}
 
-// for (let i = 0; i < localStorage.length; i++) {
-//     const key = localStorage.key(i);
-//     console.log(`${key}---${localStorage[key]}`)
-// }
+open.onsuccess = (event) => {
+    let db = event.target.result;
+    console.log(`baza ochildi`, db)
 
-// for(let key in localStorage){
-//     if(!localStorage.hasOwnProperty(key)){
-//         continue
-//     }
-//     console.log(key)
-// }
+    let transaction = db.transaction('users', 'readwrite');
+    let store = transaction.objectStore('users');
 
-// const keys = Object.keys(localStorage);
-// console.log(keys)
-// for (let key in keys) {
-//     console.log(`${keys[key]} ---- ${localStorage[keys[key]]}`)
-// }
+    const user = {
+        id: 1,
+        name: 'Javohir',
+        age: 21
+    }
 
-console.log({ name: 'javohir' })
-console.log(JSON.stringify({ name: 'javohir' }))
-const user = JSON.stringify({ name: 'javohir' });
-console.log(JSON.parse(user))
+    let request = store.add(user);
 
-// console.log(1)
+    request.onsuccess = () => {
+        console.log('malumot bzaga qoshildi')
+    }
+
+    request.onerror = (event) => {
+        console.log('maalumot bazaga qoshilmadi', event.target.error)
+    }
+
+}
+
+open.onerror = (event) => {
+    console.log('xato: ', event.target.result)
+}
