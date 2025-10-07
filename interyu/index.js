@@ -1,25 +1,34 @@
-function getUser(url, callback) {
-    const request = new XMLHttpRequest()
+function getUser(url) {
+    return new Promise((resolve, reject) => {
 
-    request.addEventListener('readystatechange', () => {
-        if (request.readyState === 4 && request.status === 200) {
-            callback(request.responseText)
-        } else if (request.readyState === 4) {
-            console.log('Malumotlarni olishni iloji bolmadi')
-        }
+        const request = new XMLHttpRequest()
+
+        request.addEventListener('readystatechange', () => {
+            if (request.readyState === 4 && request.status === 200) {
+                const data = JSON.parse(request.responseText);
+                resolve(data)
+            } else if (request.readyState === 4) {
+                reject('Malumotlarni olishni iloji bolmadi')
+            }
+        })
+
+        request.open('GET', url)
+
+        request.send()
     })
-
-    request.open('GET', url)
-
-    request.send()
 
 }
-getUser('https://jsonplaceholder.typicode.com/users', (data) => {
-    console.log(data)
-    getUser('./Todos/javohir.json', (data) => {
-        console.log(data)
-    })
-})
+
+const showUsers = async () => {
+    try {
+        const res = await getUser('https://jsonplaceholder.typicode.com/users');
+        console.log(res)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+showUsers()
 
 
 
