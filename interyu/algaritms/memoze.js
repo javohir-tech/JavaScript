@@ -6,7 +6,7 @@ function memoize(fn) {
     const cache = {}
     return function (...args) {
         const key = JSON.stringify(args);
-        if (!cache[key]) {
+        if (!(key in cache)) {
             cache[key] = fn(...args)
         }
         // console.log(cache)
@@ -22,7 +22,6 @@ const fn = (a, b) => {
 
 const memoizeFn = memoize(fn)
 console.log(memoizeFn(0, 0))
-console.log(callCount)
 console.log(memoizeFn(0, 0))
 console.log(callCount)
 
