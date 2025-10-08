@@ -29,6 +29,3 @@ const showUsers = async () => {
 }
 
 showUsers()
-
-
-
