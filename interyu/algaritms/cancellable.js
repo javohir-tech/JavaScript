@@ -6,7 +6,7 @@
  */
 function cancellable(fn, args, t) {
     let timer = setTimeout(() => {
-        fn(args)
+        fn(...args)
     }, t)
     return function cencalFn() {
         clearTimeout(timer)
@@ -15,23 +15,23 @@ function cancellable(fn, args, t) {
 
 const result = [];
 let start = performance.now()
-const fn = (x) => {
-    return x * 5;
+const fn = (x1, x2) => {
+    return x1 * x2;
 }
 
-const args = [2], t = 20, cancelTimeMs = 50;
+const args = [2, 4], t = 30, cancelTimeMs = 100;
 
 const log = (...args) => {
     const diff = Math.floor(performance.now() - start);
-    result.push({ 'time': diff  , 'returned' : fn(...args)})
+    result.push({ 'time': diff, 'returned': fn(...args) })
 }
 
 const cencel = cancellable(log, args, t);
 
 const maxT = Math.max(t, cancelTimeMs);
 
-setTimeout(cencel , cancelTimeMs);
+setTimeout(cencel, cancelTimeMs);
 
-setTimeout(()=>{
+setTimeout(() => {
     console.log(result)
-}, maxT+15)
+}, maxT + 15)
