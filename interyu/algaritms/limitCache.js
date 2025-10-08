@@ -6,7 +6,7 @@ class TimeLimitedCache {
 
     set(key, value, duration) {
         const now = performance.now();
-       
+
 
         const isActive = this.map.has(key) && this.map.get(key).duration > now
 
@@ -20,37 +20,27 @@ class TimeLimitedCache {
     get(key) {
         const now = performance.now();
         const res = this.map.get(key);
-        if (res.duration > now) {
-            return res
-        } else {
-            return -1;
+        if (!res) return -1
+
+        if (res.duration >= now) {
+            return res.value
+        }else{
+            this.map.delete(key)
+            return -1
         }
     }
 
     count() {
         let count = 0;
         const now = performance.now();
-        for (let [_, args] of this.map.entries()) {
-            if (args.duration > now) {
+        for (let [key, item] of this.map.entries()) {
+            if (item.duration >= now) {
                 count++
+            }else{
+                this.map.delete(key)
             }
         }
         return count
     }
 };
-
-const timeLimitedCache = new TimeLimitedCache()
-// console.log(timeLimitedCache.set(1, 42, 100))
-console.log(timeLimitedCache.set(1, 42, 100), )
-console.log(timeLimitedCache.set(1, 42, 100), 'salom')
-timeLimitedCache.set(2, 41, 120)
-setTimeout(() => {
-    console.log(timeLimitedCache.get(1))
-}, 50);
-setTimeout(() => {
-    console.log(timeLimitedCache.get(2))
-}, 130)
-setTimeout(() => {
-    console.log(timeLimitedCache.count())
-}, 30);
 
