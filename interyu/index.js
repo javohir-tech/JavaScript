@@ -13,8 +13,9 @@ function getUser(url) {
         })
 
         request.open('GET', url)
+        
 
-        request.send()
+        request.send();
     })
 
 }
