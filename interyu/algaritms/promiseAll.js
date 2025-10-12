@@ -1,26 +1,32 @@
 function promiseAll(functions) {
     return new Promise((resolve, reject) => {
         const results = [];
+        let count = 0
         if (functions.length === 0) {
             resolve([]);
             return
         }
-        for (let fn of functions) {
+
+
+
+        functions.forEach((fn, index) => {
             fn()
                 .then(res => {
-                    results.push(res);
-                    if (results.length === functions.length) {
+                    results[index] = res // index bilan promiselarni tartiplab qaytardik bir biridan qancha oldin qaytgan bolsa ham 
+                    count++
+
+                    if(count === functions.length){
                         resolve(results)
                     }
-                }).catch(err => {
-                    reject(err)
-                })
-        }
+                }).catch(err=>  reject(err))
+        });
     })
 }
 
 const functions = [
-    () => new Promise(res => setTimeout(() => res(5), 200))
+    () => new Promise(resolve => setTimeout(() => resolve(4), 50)),
+    () => new Promise(resolve => setTimeout(() => resolve(10), 150)),
+    () => new Promise(resolve => setTimeout(() => resolve(16), 100))
 ]
 
 const start = Date.now();
