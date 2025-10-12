@@ -1,23 +1,26 @@
 function promiseAll(functions) {
     return new Promise((resolve, reject) => {
-        const result = [];
-        let count = 0;
-        //Bu asinxron funksiya bu sinxron funksiyalar bajaarilaayotgan 
-        //  vaqtda callback queue da tayyorlanayotgan boladi 
-        // shuning uchun ham loop tugaganidan keyin result yoki countni holatini ko'rmoqchi bolsang boshlangich holatda boladi
-        // bu funksiya callback queue dan qaytganda result yoki countni sen elon qilgan qismiga 
-        // ozgartirish kirita olmaydi sabab sen bu funksiya baajarilip qaytip kelguncha 
-        // ularni elon qilgansan 
+        const results = [];
+        if(functions.length ===0){
+            resolve([]);
+            return
+        }
+        //for off sinxron kod shuning uchun promiselar parallel ishlaydi 
         for (let fn of functions) {
             fn()
                 .then(res => {
-                    result.push(res)
-                    count++
-                    if (count === functions.length) {
-                        resolve(result)
+                    results.push(res);
+                    if (res.length === functions.length) {
+                        resolve(results)
                     }
-                }).catch(err => reject)
+                }).catch(err => {
+                    reject(err)
+                })
         }
+
+        // bu yerda resultni kormoqchi bolsang [] chiqadi sabab asinxron kodlar hali ishlap
+        // tugalanmasdan sen resultsni elon qilayapsan 
+        // console.log(results)
     })
 }
 
