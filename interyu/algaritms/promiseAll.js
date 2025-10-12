@@ -1,26 +1,23 @@
 function promiseAll(functions) {
     return new Promise((resolve, reject) => {
-        const results = [];
+        const result = [];
         let count = 0;
-
-        if (functions.lenght === 0) {
-            resolve([])
-            return
-        }
-
-        functions.forEach((fn, index) => {
+        //Bu asinxron funksiya bu sinxron funksiyalar bajaarilaayotgan 
+        //  vaqtda callback queue da tayyorlanayotgan boladi 
+        // shuning uchun ham loop tugaganidan keyin result yoki countni holatini ko'rmoqchi bolsang boshlangich holatda boladi
+        // bu funksiya callback queue dan qaytganda result yoki countni sen elon qilgan qismiga 
+        // ozgartirish kirita olmaydi sabab sen bu funksiya baajarilip qaytip kelguncha 
+        // ularni elon qilgansan 
+        for (let fn of functions) {
             fn()
                 .then(res => {
-                    results[index] = res;
+                    result.push(res)
                     count++
-                    console.log(count)
-                    if (count === functions.lenght) {
-                        resolve(results)
+                    if (count === functions.length) {
+                        resolve(result)
                     }
-                }).catch(err => {
-                    reject(err)
-                })
-        });
+                }).catch(err => reject)
+        }
     })
 }
 
