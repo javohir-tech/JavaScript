@@ -1,6 +1,10 @@
 var debounce = function (fn, t) {
-    return  function (...args) {
-        
+    let timer
+    return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn(...args)
+        }, t)
     }
 
 };
@@ -8,14 +12,14 @@ var debounce = function (fn, t) {
 const start = Date.now();
 const func = (...args) => {
     const diff = Date.now() - start;
-    console.log([{ "t": diff, "args": [...args] }])
+    console.log([{ "t": diff, "args": args }])
 }
 
-const dlog = debounce(func, 50)
+const dlog = debounce(func, 30)
 
 setTimeout(() => {
-    dlog([1]);
+    dlog(1);
 }, 50)
 setTimeout(() => {
-    dlog([2]);
+    dlog(2);
 }, 75)
