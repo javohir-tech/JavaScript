@@ -8,7 +8,7 @@ var chunk = function (arr, size) {
     for (let i = 0; i < arr.length; i += size) {
         const miniRes = [];
         for (let j = i; j < i + size; j++) {
-            if (typeof (arr[j]) !== undefined && arr[j]) {
+            if (typeof arr[j] !== "undefined") {
                 miniRes.push(arr[j])
             }
         }
@@ -17,7 +17,7 @@ var chunk = function (arr, size) {
     return result
 };
 
-const arr =[1,9,6,3,2], size = 3
+const arr = [1, 9, 6, 3, 2, 0], size = 3
 
 console.log(chunk(arr, size))
 
