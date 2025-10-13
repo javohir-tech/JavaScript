@@ -7,18 +7,16 @@ function promiseAll(functions) {
             return
         }
 
-
-
         functions.forEach((fn, index) => {
             fn()
                 .then(res => {
                     results[index] = res // index bilan promiselarni tartiplab qaytardik bir biridan qancha oldin qaytgan bolsa ham 
                     count++
 
-                    if(count === functions.length){
+                    if (count === functions.length) {
                         resolve(results)
                     }
-                }).catch(err=>  reject(err))
+                }).catch(err => reject(err))
         });
     })
 }
