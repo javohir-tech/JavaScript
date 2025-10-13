@@ -30,3 +30,4 @@ function IPv4(ip) {
 const api = "1.1.1.1"
 
 console.log(IPv4(api))
+
