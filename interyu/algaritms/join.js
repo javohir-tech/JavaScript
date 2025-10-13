@@ -5,26 +5,24 @@
  */
 var join = function (arr1, arr2) {
     const map = new Map();
-
-    for (const item of arr1) {
-        const key = item.id;
-        if (!map.has(key)) {
-            map.set(key, item)
-        } else {
-            map.set(key, { ...map.get(key), ...item })
-        }
-    }
-
-    for (const item of arr2) {
-        const key = item.id;
-        if (!map.has(key)) {
-            map.set(key, item)
-        } else {
-            map.set(key, { ...map.get(key), ...item })
-        }
-    }
-    const newMap = Object.fromEntries(map)
     const result = [];
+
+    const tartiplash = (arr) => {
+        for (const item of arr) {
+            const key = item.id;
+            if (!map.has(key)) {
+                map.set(key, item)
+            } else {
+                map.set(key, { ...map.get(key), ...item })
+            }
+        }
+    }
+
+    tartiplash(arr1);
+    tartiplash(arr2);
+
+    const newMap = Object.fromEntries(map)
+
     for (let key in newMap) {
         result.push(newMap[key])
     }
