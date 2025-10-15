@@ -1,18 +1,20 @@
 function IPv4(ip) {
-    const err = "Notog'ri manzil"
+    
+    const err = "Notog'ri manzil";
+
     if (!/[0-9.]+$/.test(ip)) {
-        return `${err} : IP manzil raqamlar va nuqtalardan iborat bo'lishi kerak `
+        return `${err} : IP manzil raqamlar va nuqtalardan iborat bo'lishi kerak `;
     }
 
     const parts = ip.split(".");
     if (!parts.length === 4) {
-        return `${err} : IP manzil 4 ta bo'limdan iborat bo'lishi kerak `
+        return `${err} : IP manzil 4 ta bo'limdan iborat bo'lishi kerak `;
     }
 
     for (let part of parts) {
         const num = Number(part);
         if (num === "" || isNaN(num) || num < 0 || num > 255) {
-            return `${err} : IP manzil 0 va 255 orasida bo'lishi kerak `
+            return `${err} : IP manzil 0 va 255 orasida bo'lishi kerak `;
         }
     }
 
