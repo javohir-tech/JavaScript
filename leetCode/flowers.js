@@ -20,6 +20,6 @@ var canPlaceFlowers = function (flowerbed, n) {
     return n === count
 };
 
-const flowerbed = [1, 0, 0, 0, 0, 0, 1], n = 2
+const flowerbed = [0, 0, 1, 0, 1], n = 1
 
 console.log(canPlaceFlowers(flowerbed, n))
