@@ -9,7 +9,12 @@ var canPlaceFlowers = function (flowerbed, n) {
     let i = 1
     while (i < flowerbed.length - 2) {
         if (miniBed.every(item => item === 0)) {
-            miniBed[miniBed.length - 2] = 1;
+            miniBed[1] = 1;
+            count++
+        } else if (miniBed.reduce((acc, curr) => acc + curr, 0) === 1 && miniBed[1]===0) {
+            if (miniBed[0] === 0) {
+                miniBed[0] = 1
+            }
             count++
         }
         miniBed.shift();
@@ -17,9 +22,10 @@ var canPlaceFlowers = function (flowerbed, n) {
         console.log(miniBed)
         i++
     }
+    console.log(count)
     return n === count
 };
 
-const flowerbed = [0, 0, 1, 0, 1], n = 1
+const flowerbed = [0, 0, 1, 0, 1, 0, 0], n = 2
 
 console.log(canPlaceFlowers(flowerbed, n))
