@@ -4,16 +4,17 @@
  * @return {boolean[]}
  */
 var kidsWithCandies = function (candies, extraCandies) {
-    const result = []
+    let maxCanie = Math.max(...candies);
+    const result = [];
+
     for (let candie of candies) {
-        let extra = candie + extraCandies;
-        result.push(candies.every(item => item <= extra))
+        result.push(candie+extraCandies >= maxCanie)
     }
 
     return result
 };
 
-const candies = [2, 3, 5, 1, 3]
+const konfetlar = [2, 3, 5, 1, 3];
 const extraCandies = 3;
 
-console.log(kidsWithCandies(candies , extraCandies))
+console.log(kidsWithCandies(konfetlar, extraCandies))
