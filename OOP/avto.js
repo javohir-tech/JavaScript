@@ -1,5 +1,5 @@
 class Avto {
-    #km;
+    #km
     static avto_num = 0
     constructor(make, model, rang, yil, narx, km = 0) {
         this.make = make;
