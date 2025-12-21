@@ -2,25 +2,17 @@
  * @param {string} s
  * @return {number}
  */
-var lengthOfLongestSubstring = function(s) {
-    // const obj = {}
-    let sum = []
-    let res = []
-    for(let i=0 ; i<s.length ;i++){
-        if(!sum.includes(s[i])){
-            sum.push(s[i])
-            if(sum.length > res.length){
-                 res = sum
-            }
-        }else{
-           sum = []
-        }
+var lengthOfLongestSubstring = function (s) {
+    let rigth = 0;
+    let left = 0;
+    let i = 0
+    const window = []
+    while (i < s.length) {
+        if(window.includes(s[rigth]))
     }
-
-    return res.length
 };
 
-let s = "bbbbb"
+let s = "abcabcbb"
 
 
 console.log(lengthOfLongestSubstring(s))
