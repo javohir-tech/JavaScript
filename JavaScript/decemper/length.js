@@ -3,16 +3,11 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-    let rigth = 0;
-    let left = 0;
-    let i = 0
-    const window = []
-    while (i < s.length) {
-        if(window.includes(s[rigth]))
-    }
+    var letters = s.split('')
+    
 };
 
-let s = "abcabcbb"
+const s = 'abcabcbb'
+const a = 'pwwkew'
 
-
-console.log(lengthOfLongestSubstring(s))
+console.log(lengthOfLongestSubstring("dvdf"))
