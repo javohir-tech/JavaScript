@@ -3,12 +3,25 @@
  * @return {number}
  */
 var lengthOfLongestSubstring = function (s) {
-    let hashTable = {}
-    let res = 0
-    let start = 0
-    for (let i = 0; i < s.length; i++) {
-        // if(hashTable[str[i]]!==undefined &&)
+    let result = new Map();
+    let max = 0;
+    let letter = s.split('')
+
+    for (let i = 0; i < letter.length; i++) {
+        if(!result.has(letter[i])){
+            result.set(letter[i] , i)
+        }else{
+            console.log(i)
+            i = result.get(letter[i])
+            result.clear()
+        }
+
+        if(max < result.size){
+            max = result.size
+        }
     }
+
+    return max
 };
 
 const s = 'abcabcbb'
